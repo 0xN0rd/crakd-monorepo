@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "name": "crakd-api",
+      "cwd": "./packages/crakd-api",
+      "script": "yarn",
+      "args": "start"
+    },
+    {
+      "name": "crakd-client",
+      "cwd": "./packages/crakd-client",
+      "script": "yarn",
+      "args": "start"
+    }
+  ]
+}
