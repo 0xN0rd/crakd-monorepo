@@ -26,6 +26,8 @@ const UsersPage: FC = () => {
         dataLimit: DataLimit.Users,
     });
 
+    console.log({ data });
+
     const isEmpty = !data?.pages[0] || data.pages[0].length === 0;
 
     if (isFetching && !isFetchingNextPage) {

@@ -96,7 +96,7 @@ const SettingsCreateUser: FC<SettingsCreateUserProps> = ({ searchQuery }) => {
                     <InputText name="fullName" placeholder="Full Name" value={values.fullName} onChange={onChange} />
                     <Spacing bottom="xs" />
                     
-                    <InputText name="username" placeholder="Username" value={values.email} onChange={onChange} />
+                    <InputText name="username" placeholder="Username" value={values.username} onChange={onChange} />
                     <Spacing bottom="xs" />
 
                     <InputText

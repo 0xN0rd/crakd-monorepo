@@ -46,7 +46,7 @@ const EntryCreateButton: FC<EntryCreateButtonProps> = ({ tournament, queryKey })
                 />
             )}
             <Button ghost fullWidth onClick={onClick}>
-                <Container>GLHF!</Container>
+                <Container>Click here to enter tournament!</Container>
             </Button>
         </Root>
     );

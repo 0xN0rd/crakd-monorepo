@@ -25,7 +25,7 @@ const Home: FC = () => {
 
                     <Spacing top="sm">
                         {!authUser && (
-                            <Button inline onClick={openAuthModal} weight="bold" color="primaryGradient">
+                            <Button main inline onClick={openAuthModal} weight="bold" color="primaryGradient">
                                 Sign up
                             </Button>
                         )}

@@ -39,6 +39,8 @@ const TournamentPage: FC<TournamentPageProps> = ({ tournament }) => {
         apiCall: fetchEntriesByTournamentId,
         dataLimit: DataLimit.EntriesByTournamentName,
     });
+    
+    console.log({ data: entries });
 
     const openAuthModal = () => {
         dispatch(openAuthPopup(PopupType.Sign_Up));
@@ -72,7 +74,7 @@ const TournamentPage: FC<TournamentPageProps> = ({ tournament }) => {
                         <CommunityIcon width="40" />
 
                         <Spacing top="sm">
-                            <Button inline onClick={openAuthModal} color="primary">
+                            <Button main inline onClick={openAuthModal} color="primary">
                                 Sign Up
                             </Button>
 

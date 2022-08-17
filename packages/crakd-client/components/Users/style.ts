@@ -11,6 +11,7 @@ export const Root = styled.div`
   border-radius: ${(p) => p.theme.radius.sm};
   transition: border-color 0.1s;
   box-shadow: ${(p) => p.theme.shadows.sm};
+  cursor: pointer;
 `;
 
 export const Wrapper = styled.div`
@@ -43,10 +44,10 @@ export const InitialLetters = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 150px;
   text-transform: uppercase;
   color: ${(p) => p.theme.colors.general.white};
-  font-size: ${(p) => p.theme.font.size.lg};
+  font-size: ${(p) => p.theme.font.size.xl};
   background-color: ${(p) => p.color};
 `;
 

@@ -80,10 +80,10 @@ const UserSchema = new Schema(
     imagePublicId: String,
     coverImage: String,
     coverImagePublicId: String,
-    tournaments: [
+    entries: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Tournament'
+        ref: 'Entry',
       },
     ],
   },
@@ -113,7 +113,7 @@ export interface IUser extends Document {
   imagePublicId: string;
   coverImage: string;
   coverImagePublicId: string;
-  tournaments: string[];
+  entries: string[];
   isValidPassword: (password: string) => Promise<boolean>;
 }
 

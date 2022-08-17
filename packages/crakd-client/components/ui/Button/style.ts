@@ -7,10 +7,11 @@ export const Root = styled.button<ButtonProps>`
   outline: 0;
   transition: opacity 0.1s;
   border: 0;
-  color: ${(p) => (p.textColor ? p.theme.colors.general[p.textColor] : p.theme.colors.general.white)};
+  color: ${(p) => (p.textColor ? p.theme.colors.general.white : p.theme.colors.general[p.textColor])};
   font-size: ${(p) => (p.size ? p.theme.font.size[p.size] : p.theme.font.size.sm)};
   padding: ${(p) => p.theme.spacing.xs} ${(p) => p.theme.spacing.lg};
-  background: ${(p) => (p.color ? p.theme.colors.general[p.color] : p.theme.colors.grey[20])};
+  background: #fff;
+  border: 1px solid transparent;
   border-radius: ${(p) => (p.radius ? p.theme.radius[p.radius] : p.theme.radius.sm)};
   font-weight: ${(p) => (p.weight ? p.theme.font.weight[p.weight] : p.theme.font.weight.normal)};
   display: flex;
@@ -18,6 +19,18 @@ export const Root = styled.button<ButtonProps>`
   justify-content: center;
   align-items: center;
   white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+  ${(p) =>
+    p.main &&
+    `
+    &:hover {
+      background: #000;
+      border-color: #fff;
+      color: #fff;
+      border: 1px solid #fff;
+    }
+  `};
 
   ${(p) =>
     p.disabled &&

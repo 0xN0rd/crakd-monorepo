@@ -15,26 +15,38 @@ export const getTournamentEntries = async(tournamentId: any): Promise<any> => {
 
 export const getEntriesByTournamentId = async (tournamentId: any, offset: number, limit: number): Promise<any> => {
   const entries = await Entry.find({ tournament: tournamentId })
+    .populate({
+      path: 'user',
+      select: '-password',
+    })
     .populate('tournament')
     .skip(offset)
     .limit(limit)
-    .sort([['score', -1],]);
+    .sort({ createdAt: 'desc' });
 
   return entries.filter((p: any) => p?.user?.banned !== true);
 };
 
 export const getEntriesByUserId = async (userId: any, offset: number, limit: number): Promise<any> => {
   const entries = await Entry.find({ user: userId })
+    .populate({
+      path: 'user',
+      select: '-password',
+    })
     .populate('tournament')
     .skip(offset)
     .limit(limit)
-    .sort([['createdAt', -1],]);
+    .sort({ createdAt: 'desc' });
 
   return entries; 
 };
 
 export const getEntryById = async (id: string): Promise<any> => {
   const entry = await Entry.findById(id)
+    .populate({
+      path: 'user',
+      select: '-password',
+    })
     .populate('tournament');
   
   return entry;
@@ -73,6 +85,10 @@ export const updateEntry = async(
   };
 
   const updatedEntry = await Entry.findOneAndUpdate({ _id: entryId }, { ...fields }, { new: true })
+    .populate({
+      path: 'user',
+      select: '-password',
+    })
     .populate('tournament');
 
   return updatedEntry;

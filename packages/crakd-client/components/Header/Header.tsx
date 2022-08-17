@@ -83,6 +83,7 @@ const Header: ForwardRefRenderFunction<HTMLButtonElement, HeaderProps> = ({ togg
                             </Button>
                         ) : (
                             <Button
+                                main
                                 ghost={isSmallScreen}
                                 size="sm"
                                 weight="bold"

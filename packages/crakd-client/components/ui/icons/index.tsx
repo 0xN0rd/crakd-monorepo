@@ -15,6 +15,7 @@ export { default as EmptyIcon } from './EmptyIcon';
 export { default as NotificationIcon } from './NotificationIcon';
 export { default as EndCallIcon } from './EndCallIcon';
 export { default as TournamentIcon } from './TournamentIcon';
+export { default as TournamentColorfulIcon} from './TournamentColorfulIcon';
 export { default as HomeIcon } from './HomeIcon';
 export { default as EnvelopeIcon } from './EnvelopeIcon';
 export { default as CommunityIcon } from './CommunityIcon';

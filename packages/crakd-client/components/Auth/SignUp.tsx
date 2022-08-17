@@ -133,7 +133,7 @@ const SignUp: FC = () => {
                     <Spacing bottom="sm" />
 
                     <Bottom>
-                        <Button weight="bold" color="primaryGradient" fullWidth>
+                        <Button main weight="bold" color="primaryGradient" fullWidth>
                             Sign Up
                         </Button>
                         <Spacing top="sm">

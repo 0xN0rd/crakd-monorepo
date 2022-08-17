@@ -8,6 +8,7 @@ import {
     PlusIcon,
     HouseColorfulIcon,
     PeopleColorfulIcon,
+    TournamentColorfulIcon,
     MessageColorfulIcon,
     DragIcon,
 } from '../ui/icons';
@@ -94,7 +95,7 @@ const Sidebar: ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = ({ isOpe
                         active={router.pathname === '/tournaments'}
                         size="sm"
                     >
-                        <HouseColorfulIcon width="30" color={router.pathname === '/tournaments' ? 'primary' : 'text'} />
+                        <TournamentColorfulIcon width="30" color={router.pathname === '/tournaments' ? 'primary' : 'text'} />
                         {'\u00A0'}
                         {'\u00A0'} Tournaments
                     </ButtonLink>

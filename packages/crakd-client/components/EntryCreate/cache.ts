@@ -25,6 +25,7 @@ export const updateEntriesByUserIdCache = ({
     }
 
     queryClient.setQueryData(queryKey, (existingEntries: any) => {
+        console.log(queryKey, existingEntries);
         return {
             ...existingEntries,
             pages: existingEntries.pages.map((entries: Entry[]) => {

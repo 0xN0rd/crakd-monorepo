@@ -4,7 +4,7 @@ import { User } from '../models';
 export const getAuthUser = async (id: string): Promise<any> => {
   const user = await User.findOneAndUpdate({ _id: id }, { isOnline: true })
     .select('-password')
-    .populate({ path: 'tournaments', options: { sort: { createdAt: 'desc'} } });
+    .populate({ path: 'entries', options: { sort: { createdAt: 'desc'} } });
 
   return user;
 };
@@ -116,7 +116,7 @@ export const getNewUsers = async (userId?: string): Promise<any> => {
 
 export const updateUser = async (id: string, fieldsToUpdate: any): Promise<any> => {
   const user = await User.findOneAndUpdate({ _id: id }, { ...fieldsToUpdate }, { new: true})
-    .populate('tournaments');
+    .populate('entries');
   
   return user;
 };

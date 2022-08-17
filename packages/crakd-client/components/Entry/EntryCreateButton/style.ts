@@ -15,6 +15,7 @@ export const Container = styled.div`
   border-radius: ${(p) => p.theme.radius.md};
   background-color: ${(p) => p.theme.colors.grey[5]};
   height: 40px;
+  justify-content: center;
   margin-left: ${(p) => p.theme.spacing.xs};
   padding-left: ${(p) => p.theme.spacing.xs};
   color: ${(p) => p.theme.colors.general.textSecondary};

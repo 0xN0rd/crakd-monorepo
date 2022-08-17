@@ -26,7 +26,7 @@ const TournamentsCard: FC<TournamentsCardProps> = ({ tournament, queryKey }) => 
 
     return (
         <Card>
-            <Link href={`/tournament/${tournament._id}`} disableBorderOnHover>
+            <Link href={`/tournament/${tournament.name}`} disableBorderOnHover>
                 <ImageContainer>
                     {image ? (
                         <Image alt={tournament.name} src={image} />

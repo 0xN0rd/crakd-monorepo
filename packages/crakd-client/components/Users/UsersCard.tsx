@@ -31,8 +31,8 @@ const UsersCard: FC<UsersCardProps> = ({ user, queryKey }) => {
     };
 
     return (
-        <Root>
-            <Link href={`/profile/${user._id}`} disableBorderOnHover>
+        <Link href={`/profile/${user._id}`} disableBorderOnHover>
+            <Root>
                 <ImageContainer>
                     {image ? (
                         <Image alt={user.fullName} src={image} />
@@ -40,16 +40,16 @@ const UsersCard: FC<UsersCardProps> = ({ user, queryKey }) => {
                         <InitialLetters color={color}>{splitFullName()}</InitialLetters>
                     )}
                 </ImageContainer>
-            </Link>
 
-            <Spacing top="sm" bottom="xs">
-                <Link href={`/profile/${user._id}`} disableBorderOnHover weight="bold" color="text">
-                    <Gamertag>{gamertag}</Gamertag>
-                </Link>
-            </Spacing>
+                <Spacing top="sm" bottom="xs">
+                    <Link href={`/profile/${user._id}`} disableBorderOnHover weight="bold" color="text">
+                        <Gamertag>{gamertag}</Gamertag>
+                    </Link>
+                </Spacing>
 
-            {username ? <UserName>@{username}</UserName> : <Spacing top="sm" />}
-        </Root>
+                {username ? <UserName>@{username}</UserName> : <Spacing top="sm" />}
+            </Root>
+        </Link>
     );
 };
 

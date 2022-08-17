@@ -151,6 +151,7 @@ const EntryCreate: FC<EntryCreateProps> = ({
                 <Spacing top="xs" bottom="xxs" />
 
                 <Button
+                    main    
                     fullWidth
                     type="submit"
                     color="primary"

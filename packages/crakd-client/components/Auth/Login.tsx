@@ -110,7 +110,7 @@ const Login: FC = () => {
                         Forgot password?
                     </LinkButton>
                 </Spacing>
-                <Button weight="bold" color="primaryGradient" fullWidth>
+                <Button main weight="bold" color="primaryGradient" fullWidth>
                     Log in
                 </Button>
                 <Bottom>
