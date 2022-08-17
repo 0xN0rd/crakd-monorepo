@@ -47,7 +47,7 @@ const EntryController = {
             }
         }
 
-        const updatedEntry = await updateEntry(entryId, score, position, tournamentId);
+        const updatedEntry = await updateEntry(entryId, score, position, tournamentId, authUser._id);
         return res.send(updatedEntry);
     },
     delete: async (req: Request, res: Response): Promise<any> => {

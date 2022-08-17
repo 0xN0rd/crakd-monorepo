@@ -159,7 +159,7 @@ const Sidebar: ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = ({ isOpe
             )}
 
             {isAdmin && (
-                <Button size="sm" onClick={() => setModal(true)} textColor="text">
+                <Button main size="sm" onClick={() => setModal(true)}>
                     <PlusIcon />
                     {'\u00A0'}
                     {'\u00A0'}

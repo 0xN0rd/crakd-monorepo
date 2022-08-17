@@ -13,6 +13,7 @@ import { store } from '../store';
 import AuthPopup from '../components/Auth';
 import currentTheme, { Theme } from '../theme';
 import { Config } from '../utils';
+import './global.css'
 
 axios.defaults.baseURL = Config.API_URL;
 axios.defaults.withCredentials = true;

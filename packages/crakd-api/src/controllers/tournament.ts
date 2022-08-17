@@ -53,7 +53,7 @@ const TournamentController = {
         return res.send(newTournament);
     },
     update: async (req: Request, res: Response): Promise<any> => {
-        const { _id, name, authRequired, format, duration, description } = req.body;
+        const { _id, name, authRequired, format, duration, description, entries } = req.body;
         const trimmedName = name.trim();
 
         if (tournamentNameReg.test(trimmedName) || !trimmedName || trimmedName.length > 20) {
@@ -66,7 +66,7 @@ const TournamentController = {
         if (tournamentExists && tournamentExists?._id.toString() !== _id) {
             return res.status(ErrorCodes.Bad_Request).send(`A channel with the name "${trimmedName}" already exists.`);
         }
-        const updatedTournament = await updateTournament(_id, trimmedName, authRequired, format, duration, description);
+        const updatedTournament = await updateTournament(_id, trimmedName, authRequired, format, duration, description, entries);
         return res.send(updatedTournament);
     },
     reorder: async (req: Request, res: Response): Promise<any> => {

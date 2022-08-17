@@ -87,6 +87,7 @@ export const getUsers = async (
       { username: new RegExp(searchQuery, 'i') },
       { fullName: new RegExp(searchQuery, 'i') },
       { email: new RegExp(searchQuery, 'i') },
+      { gamertag: new RegExp(searchQuery, 'i') },
     ];
   }
 
@@ -115,7 +116,7 @@ export const getNewUsers = async (userId?: string): Promise<any> => {
 };
 
 export const updateUser = async (id: string, fieldsToUpdate: any): Promise<any> => {
-  const user = await User.findOneAndUpdate({ _id: id }, { ...fieldsToUpdate }, { new: true})
+  const user = await User.findOneAndUpdate({ _id: id }, { ...fieldsToUpdate }, { new: true })
     .populate('entries');
   
   return user;

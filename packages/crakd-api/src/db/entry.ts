@@ -53,16 +53,16 @@ export const getEntryById = async (id: string): Promise<any> => {
 };
 
 export const createEntry = async(
-  userId: string,
   score: number,
   position: number,
-  tournamentId: string
+  tournamentId: string,
+  userId: string,
 ): Promise<any> => {
   const newEntry = await new Entry({
-    userId,
     score: score,
     position: position,
     tournament: tournamentId,
+    user: userId
   }).save();
 
   await newEntry.populate('tournament').populate('user').execPopulate();
@@ -76,12 +76,14 @@ export const updateEntry = async(
   entryId: string,
   score: number,
   position: number,
-  tournamentId: string
+  tournamentId: string,
+  userId: string,
 ): Promise<any> => {
   const fields = {
     score,
     position,
     tournament: tournamentId,
+    user: userId,
   };
 
   const updatedEntry = await Entry.findOneAndUpdate({ _id: entryId }, { ...fields }, { new: true })

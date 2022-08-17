@@ -1,0 +1,116 @@
+.appear {
+    opacity: 0;
+    animation: appear 0.8s cubic-bezier(0.1, 0, 0.175, 1) forwards;
+  }
+  
+  .appear-first {
+    animation-delay: 0.4s;
+  }
+  
+  .appear-second {
+    animation-delay: 1.4s;
+  }
+  
+  .appear-third {
+    animation-delay: 2.2s;
+  }
+  
+  .appear-fourth {
+    animation-delay: 2.4s;
+  }
+  
+  .appear-fifth {
+    animation-delay: 3s;
+  }
+  
+  .appear-sixth {
+    animation-delay: 3.4s;
+  }
+  
+  @keyframes appear {
+    to {
+      opacity: 1;
+    }
+  }
+
+.wrapper {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(1200px + calc(2 * 24px));
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 1px;
+  max-width: 100%;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.hero-texts {
+  padding: 3.5rem 0;
+}
+
+.hero {
+  font-size: 4rem;
+  line-height: 1.15;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 5px;
+}
+
+.first-gradient {
+  background-image: linear-gradient(90deg, #007cf0 25%, #00dfd8 100%);
+  opacity: 1;
+  margin: 0.3rem 0;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  animation: animated-gradient-text-fade 3s;
+}
+
+.second-gradient {
+  background-image: linear-gradient(90deg, #7928ca 25%, #ff0080 100%);
+  opacity: 1;
+  margin: 0.3rem 0;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  animation: animated-gradient-text-fade 3s;
+}
+
+.third-gradient {
+  background-image: linear-gradient(90deg, #008a63 25%, #13ff81 100%);
+  opacity: 1;
+  margin: 0.3rem 0;
+  background-clip: text;
+  position: relative;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  animation: animated-gradient-text-fade 3s;
+}
+
+@keyframes animated-gradient-text-fade {
+  0%, 15% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    font-size: 44px;
+    line-height: 1;
+    font-weight: 800;
+    margin: 0;
+  }
+}

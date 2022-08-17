@@ -38,7 +38,7 @@ const EntryCard: FC<EntryCardProps> = ({
     const authUser = useSelector((state: RootState) => state.auth.user);
     const entryCardTitle = (
         <Title>
-            <SeeMore>{entry.tournament.name}</SeeMore>
+            <SeeMore>{entry.tournament?.name}</SeeMore>
         </Title>
     );
 
@@ -46,13 +46,13 @@ const EntryCard: FC<EntryCardProps> = ({
         <Root>
             <Top>
                 <Author>
-                    <Link disableBorderOnHover href={`/profile/${entry.user._id}`}>
+                    <Link disableBorderOnHover href={`/profile/${entry.user?._id}`}>
                         <Avatar image={entry.user?.image} size={1.25} />
                     </Link>
 
                     <Spacing left="xs">
-                        <Link href={`/profile/${entry.user._id}`} color="text">
-                            <Name>{entry.user.gamertag} </Name>
+                        <Link href={`/profile/${entry.user?._id}`} color="text">
+                            <Name>{entry.user?.gamertag} </Name>
                         </Link>
                         <CreatedAt>
                             {timeAgo(entry.createdAt)}
