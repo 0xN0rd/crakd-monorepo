@@ -118,9 +118,9 @@ const SettingsCommunity: FC = () => {
                 <Spacing top="md" />
                 <LabelAndToggle>
                     <div>
-                        <P weight="bold">Community Members Access</P>
+                        <P weight="bold">Crakd Users Access</P>
                         <Spacing top="xs">
-                            <P color="textSecondary"> Is email verification required to become a member?</P>
+                            <P color="textSecondary"> Is email verification required to become a user?</P>
                         </Spacing>
                     </div>
                     <Toggle name="isEmailVerificationRequired" checked={values.isEmailVerificationRequired} onChange={onChange} />

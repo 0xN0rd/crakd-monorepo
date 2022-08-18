@@ -46,7 +46,7 @@ export const updateUserResetPasswordToken = async (userId: string, token: string
   return user;
 };
 
-export const createUser = async(
+export const createUser = async (
   fullName: string,
   username: string,
   gamertag: string,

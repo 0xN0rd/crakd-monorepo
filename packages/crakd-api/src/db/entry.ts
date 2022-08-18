@@ -24,7 +24,7 @@ export const getEntriesByTournamentId = async (tournamentId: any, offset: number
     .limit(limit)
     .sort({ createdAt: 'desc' });
 
-  return entries.filter((p: any) => p?.user?.banned !== true);
+  return entries.filter((e: any) => e?.user?.banned !== true);
 };
 
 export const getEntriesByUserId = async (userId: any, offset: number, limit: number): Promise<any> => {
