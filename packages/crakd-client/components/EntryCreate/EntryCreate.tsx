@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMutation, useQueryClient } from 'react-query';
 import { Tournament } from '../../constants';
-import { Spacing, Button, Modal, Select, Avatar } from '../ui';
+import { Spacing, Button, Modal, Select, Avatar, InputText, Text } from '../ui';
 import { SelectContainer } from './style';
 import { RootState } from '../../store';
 import { AlertTypes, openAlert } from '../../store/alert';
@@ -20,7 +20,9 @@ const createEntry = async ({ score, position, tournamentId }) => {
     formData.append('score', score);
     formData.append('position', position);
     formData.append('tournamentId', tournamentId);
-
+    // formData.entries() shows that the above appends work
+    // but for some reason are not passed to newEntry below
+    // Logging the controller in the backend shows an empty object passed
     const newEntry = await axios.post('/entries/create', formData, config);
     return newEntry.data;
 };
@@ -128,8 +130,8 @@ const EntryCreate: FC<EntryCreateProps> = ({
     };
 
     const isFormValid = () => {
-        const { score, position } = formValues;
-        return score || position;
+        const { score, position, tournamentId } = formValues;
+        return score && position && tournamentId;
     };
 
     return (
@@ -138,7 +140,10 @@ const EntryCreate: FC<EntryCreateProps> = ({
                 <SelectContainer>
                     <Avatar size={1.25} image={authUser.image} />
                     <Spacing left="sm">
-                        <Select onChange={handleChange} name="tournamentId" defaultValue={tournamentId && tournamentId}>
+                        <Text>Tournament</Text>
+                        <Spacing bottom="xs" />
+                        <Select onChange={handleChange} name="tournamentId" defaultValue="select">
+                            <option value="select">Select</option>
                             {tournaments?.map((tournament: Tournament) => (
                                 <Fragment key={tournament._id}>
                                     <option value={tournament._id}>{tournament.name}</option>
@@ -148,14 +153,26 @@ const EntryCreate: FC<EntryCreateProps> = ({
                     </Spacing>
                 </SelectContainer>
 
-                <Spacing top="xs" bottom="xxs" />
+                <Spacing top="xs" bottom="xs">
+                    <Text>Score</Text>
+                    <Spacing bottom="xs" />
+                    <InputText name="score" onChange={handleChange} value={formValues.score} placeholder={0} />
+                </Spacing>
+
+                <Spacing bottom="xs">
+                    <Text>Position</Text>
+                    <Spacing bottom="xs" />
+                    <InputText name="position" onChange={handleChange} value={formValues.position} placeholder={1} />
+                </Spacing>
+
+                <Spacing top="xs" bottom="xs" />
 
                 <Button
                     main    
                     fullWidth
                     type="submit"
                     color="primary"
-                    disabled={isEntryCreateLoading || isEntryUpdateLoading}
+                    disabled={!isFormValid() || isEntryCreateLoading || isEntryUpdateLoading}
                 >Enter</Button>
             </form>
         </Modal>

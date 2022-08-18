@@ -39,8 +39,6 @@ const TournamentPage: FC<TournamentPageProps> = ({ tournament }) => {
         apiCall: fetchEntriesByTournamentId,
         dataLimit: DataLimit.EntriesByTournamentName,
     });
-    
-    console.log({ data: entries });
 
     const openAuthModal = () => {
         dispatch(openAuthPopup(PopupType.Sign_Up));

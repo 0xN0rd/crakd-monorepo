@@ -19,15 +19,7 @@ export const getEntriesByTournamentId = async (tournamentId: any, offset: number
       path: 'user',
       select: '-password',
     })
-    .populate({
-      path: 'tournament',
-      populate: [
-        {
-          path: 'entries',
-          populate: [{ path: 'user', select: '-password' }, { path: 'tournament' }],
-        }
-      ],
-    })
+    .populate('tournament')
     .skip(offset)
     .limit(limit)
     .sort({ createdAt: 'desc' });
@@ -41,15 +33,7 @@ export const getEntriesByUserId = async (userId: any, offset: number, limit: num
       path: 'user',
       select: '-password',
     })
-    .populate({
-      path: 'tournament',
-      populate: [
-        {
-          path: 'entries',
-          populate: [{ path: 'user', select: '-password' }, { path: 'tournament' }],
-        }
-      ],
-    })
+    .populate('tournament')
     .skip(offset)
     .limit(limit)
     .sort({ createdAt: 'desc' });
@@ -63,15 +47,7 @@ export const getEntryById = async (id: string): Promise<any> => {
       path: 'user',
       select: '-password',
     })
-    .populate({
-      path: 'tournament',
-      populate: [
-        {
-          path: 'entries',
-          populate: [{ path: 'user', select: '-password' }, { path: 'tournament' }],
-        }
-      ],
-    });
+    .populate('tournament');
   
   return entry;
 };
@@ -115,15 +91,7 @@ export const updateEntry = async(
       path: 'user',
       select: '-password',
     })
-    .populate({
-      path: 'tournament',
-      populate: [
-        {
-          path: 'entries',
-          populate: [{ path: 'user', select: '-password' }, { path: 'tournament' }],
-        }
-      ],
-    });
+    .populate('tournament');
 
   return updatedEntry;
 };

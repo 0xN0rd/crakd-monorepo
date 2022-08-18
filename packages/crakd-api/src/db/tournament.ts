@@ -45,12 +45,11 @@ export const updateTournament = async (
   authRequired: boolean,
   format: string,
   duration: string,
-  entries: any[],
   description?: string,
 ): Promise<any> => {
   const updatedTournament = await Tournament.findOneAndUpdate(
     { _id: id },
-    { name, authRequired, description, format, duration, entries },
+    { name, authRequired, description, format, duration },
     { new: true }
   );
   return updatedTournament;

@@ -25,7 +25,6 @@ export const updateEntriesByUserIdCache = ({
     }
 
     queryClient.setQueryData(queryKey, (existingEntries: any) => {
-        console.log(queryKey, existingEntries);
         return {
             ...existingEntries,
             pages: existingEntries.pages.map((entries: Entry[]) => {
@@ -91,7 +90,7 @@ export const updateCache = ({
     notAddingToCurrentTournament,
 }: updateCacheProps) => {
     let key = '';
-    if (typeof queryKey === 'string' && queryKey !== 'entriesOther') {
+    if (typeof queryKey === 'string') {
         console.error(`updateCache error: ${queryKey} is an unknown cache key.`);
         return;
     }
@@ -104,7 +103,6 @@ export const updateCache = ({
     key = typeof queryKey === 'string' ? queryKey : queryKey[0];
 
     switch (key) {
-        case 'entriesOther':
         case 'entriesByUserId':
             updateEntriesByUserIdCache({ queryKey, queryClient, operation, entry });
             break;
