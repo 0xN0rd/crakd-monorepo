@@ -11,6 +11,7 @@ import { Config, Cookies, setCookie } from '../../utils';
 
 interface User {
     fullName: string;
+    username: string;
     email: string;
     password: string;
     gamertag: string;
@@ -23,6 +24,7 @@ const signUp = async (user: User) => {
 
 const INITIAL_STATE = {
     fullName: '',
+    username: '',
     email: '',
     password: '',
     gamertag: '',
@@ -113,6 +115,8 @@ const SignUp: FC = () => {
                     )}
 
                     <InputText name="fullName" placeholder="Full Name" value={values.fullName} onChange={onChange} />
+                    <Spacing bottom="xs" />
+                    <InputText name="username" placeholder="Username" value={values.username} onChange={onChange} />
                     <Spacing bottom="xs" />
                     <InputText name="gamertag" placeholder="Gamertag i.e. NortheastBread" value={values.gamertag} onChange={onChange} />
                     <Spacing bottom="xs" />

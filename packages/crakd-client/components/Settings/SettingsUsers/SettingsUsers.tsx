@@ -27,6 +27,7 @@ const fetchUsers = async ({ queryKey, pageParam = 0 }) => {
     const { data } = await axios.get(
         `/settings/users?offset=${pageParam}&limit=${DataLimit.AdminUsers}&searchQuery=${searchQuery}`
     );
+    console.log(data);
     return data;
 };
 
@@ -44,7 +45,7 @@ const SettingsUser: FC = () => {
         isFetching,
         isFetchingNextPage,
     } = useInfiniteScroll({
-        key: ['adminusers', searchQuery],
+        key: ['adminUsers', searchQuery],
         apiCall: fetchUsers,
         dataLimit: DataLimit.AdminUsers,
     });
@@ -125,7 +126,7 @@ const SettingsUser: FC = () => {
             ) : (
                 <>
                     {isSearchResultEmpty && searchQuery && `We couldn't find an account for "${searchQuery}"`}
-                    {isSearchResultEmpty && (
+                    {!isSearchResultEmpty && (
                         <TableContainer>
                             <Table>
                                 <thead>
