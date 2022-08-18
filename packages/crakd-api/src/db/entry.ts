@@ -64,6 +64,7 @@ export const createEntry = async(
     tournament: tournamentId,
     user: userId
   }).save();
+  console.log(newEntry);
 
   await newEntry.populate('tournament').populate('user').execPopulate();
 

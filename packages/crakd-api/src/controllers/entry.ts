@@ -32,7 +32,10 @@ const EntryController = {
     create: async (req: Request, res: Response): Promise<any> => {
         const authUser = req.user as AuthUser;
         const { score, position, tournamentId } = req.body;
-        console.log(tournamentId);
+
+        if (!score && !position && !tournamentId) {
+            return res.status(400).send("Missing the 3 params");
+        }
 
         const newEntry: any = await createEntry(score, position, tournamentId, authUser._id);
         return res.send(newEntry);
