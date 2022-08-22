@@ -3,7 +3,7 @@ import Router from 'next/router';
 import { Root, StyledContainer } from './style';
 import Header from '../Header';
 import SideBar from '../Sidebar';
-import RightSideBar from '../RightSideBar';
+import RightSideBar from '../RightSidebar';
 import { Cookies, getCookie, useClickOutside, useBreakpoints } from '../../utils';
 import { Spacing, Screen } from '../../theme';
 import Seo from '../Seo';
