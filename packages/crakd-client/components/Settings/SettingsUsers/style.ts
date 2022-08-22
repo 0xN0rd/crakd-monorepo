@@ -58,15 +58,15 @@ export const SearchInput = styled.input`
 `;
 
 export const TableContainer = styled.div`
-  overflow-x: auto;
+  
+  border-radius: ${(p) => p.theme.radius.md};
+  border: 1px solid #ff0080;
 `;
 
 export const Table = styled.table`
   white-space: nowrap;
   border-collapse: collapse;
   width: 100%;
-  border: 1px solid ${(p) => p.theme.colors.grey[30]};
-  border-radius: ${(p) => p.theme.radius.sm};
 `;
 
 export const Th = styled.th`
@@ -87,8 +87,8 @@ interface TrProps {
 
 export const Tr = styled.tr<TrProps>`
   position: relative;
-  border-top: 1px solid ${(p) => p.theme.colors.grey[30]};
-  border-bottom: 1px solid ${(p) => p.theme.colors.grey[30]};
+  border-top: 1px solid #252729;
+  border-bottom: 1px solid #252729;
   background-color: ${(p) => (p.bgColor ? lighten(0.3, p.theme.colors.general[p.bgColor]) : 'transparent')};
 
   &:last-child {

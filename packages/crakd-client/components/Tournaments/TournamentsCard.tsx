@@ -1,6 +1,17 @@
 import React, { FC, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Card, CardBody, Root, ImageContainer, Image, InitialLetters, Gamertag, UserName, Format, Duration } from './style';
+import {
+    Card,
+    CardBody,
+    Root,
+    ImageContainer,
+    Image,
+    InitialLetters,
+    Gamertag,
+    UserName,
+    Format,
+    Duration
+} from './style';
 import { Link, Spacing } from '../ui';
 import theme from '../../theme';
 import { RootState } from '../../store';
@@ -25,27 +36,27 @@ const TournamentsCard: FC<TournamentsCardProps> = ({ tournament, queryKey }) => 
     }, []);
 
     return (
-        <Card>
-            <Link href={`/tournament/${tournament.name}`} disableBorderOnHover>
-                <ImageContainer>
-                    {image ? (
-                        <Image alt={tournament.name} src={image} />
-                    ) : (
-                        <InitialLetters color={color} />
-                    )}
-                </ImageContainer>
-            </Link>
-            
-            <Spacing top="sm" bottom="xs">
-                <Link href={`/profile/${tournament._id}`} disableBorderOnHover weight="bold" color="text">
-                    <Gamertag>{name}</Gamertag>
-                </Link>
-            </Spacing>
+        <Link href={`/tournament/${tournament.name}`} disableBorderOnHover>
+            <Card>
+                    <ImageContainer>
+                        {image ? (
+                            <Image alt={tournament.name} src={image} />
+                        ) : (
+                            <InitialLetters color={color} />
+                        )}
+                    </ImageContainer>
+                
+                <Spacing top="sm" bottom="xs">
+                    <Link href={`/tournament/${tournament.name}`} disableBorderOnHover weight="bold" color="text">
+                        <Gamertag>{name}</Gamertag>
+                    </Link>
+                </Spacing>
 
-            {description ? <UserName>{description}</UserName> : <Spacing top="sm" />}
-            {format ? <Format>{format}</Format> : <Spacing top="sm" />}
-            {duration ? <Duration>{duration}</Duration> : <Spacing top="sm" />}
-        </Card>
+                {description ? <UserName>{description}</UserName> : <Spacing top="sm" />}
+                {format ? <Format>{format}</Format> : <Spacing top="sm" />}
+                {duration ? <Duration>{duration}</Duration> : <Spacing top="sm" />}
+            </Card>
+        </Link>
     );
 };
 

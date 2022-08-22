@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import { Container } from '../../components/ui';
+
+export const Root = styled(Container)`
+  border: 1px solid #252729;
+`;
 
 export const Heading = styled.div`
   text-align: center;

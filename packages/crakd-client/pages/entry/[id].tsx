@@ -27,7 +27,6 @@ const EntryPage: FC<EntryPageProps> = ({ entry }) => {
             <Container maxWidth="md" marginTop="sm">
                 <EntryCard
                     refetch={refetch}
-                    disableNavigation
                     displayTournamentName
                     queryKey={['entry', data._id]}
                     entry={data}

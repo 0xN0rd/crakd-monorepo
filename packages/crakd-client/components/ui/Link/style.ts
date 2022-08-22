@@ -67,6 +67,7 @@ export const ButtonA = styled.a<ButtonAProps>`
     `
   &:hover {
     background-color: ${p.theme.colors.grey[10]};
+    transition: background-color .5s ease-out;
   }
   `}
 `;

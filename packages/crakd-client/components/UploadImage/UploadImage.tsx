@@ -14,6 +14,12 @@ interface UploadImageProps {
     setIsLoading: (param: ProfileLoading) => void;
 }
 
+const config = {
+    headers: {
+      'content-type': 'multipart/form-data',
+    },
+};
+
 const createUploadImage = async ({ image, isCover, imagePublicId, coverImagePublicId }) => {
     const formData = new FormData();
     formData.append('image', image);
@@ -21,7 +27,7 @@ const createUploadImage = async ({ image, isCover, imagePublicId, coverImagePubl
     formData.append('imagePublicId', imagePublicId);
     formData.append('coverImagePublicId', coverImagePublicId);
 
-    const newImage = await axios.post('/users/upload-photo', formData);
+    const newImage = await axios.post('/users/upload-photo', formData, config);
     return newImage;
 };
 
@@ -85,7 +91,7 @@ const UploadImage: FC<UploadImageProps> = ({ isCover, setIsLoading }) => {
                 type="file"
                 onChange={handleChange}
                 id={isCover ? 'cover-upload' : 'profile-upload'}
-                accept="image/x-png,image/jpeg"
+                accept="image/x-png,image/jpeg,image/jpg"
             />
 
             <Label isCover={isCover} htmlFor={isCover ? 'cover-upload' : 'profile-upload'}>

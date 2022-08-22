@@ -1,4 +1,4 @@
-const API_PRODUCTION_URL = 'https://crakd.gg';
+const API_PRODUCTION_URL = 'https://crakd-api.herokuapp.com';
 const API_DEV_URL = 'http://localhost:400';
 
 export const Config = {

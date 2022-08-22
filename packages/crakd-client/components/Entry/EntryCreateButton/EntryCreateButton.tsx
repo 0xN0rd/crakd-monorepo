@@ -36,7 +36,6 @@ const EntryCreateButton: FC<EntryCreateButtonProps> = ({ tournament, queryKey })
 
     return (
         <Root>
-            <Avatar image={authUser?.image} size={1.25} isOnline />
             {isEntryCreateOpen && (
                 <EntryCreate
                     tournamentId={tournament?._id}
@@ -45,8 +44,8 @@ const EntryCreateButton: FC<EntryCreateButtonProps> = ({ tournament, queryKey })
                     queryKey={queryKey}
                 />
             )}
-            <Button ghost fullWidth onClick={onClick}>
-                <Container>Click here to enter tournament!</Container>
+            <Button main fullWidth onClick={onClick}>
+                <Container>Enter Tournament</Container>
             </Button>
         </Root>
     );

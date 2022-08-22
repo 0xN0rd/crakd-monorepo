@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Cookies, setCookie } from '../../utils';
+import { Spacing } from '../ui';
 import { Root, StyledButton, Link } from './style';
 import { Follow } from 'react-twitter-widgets';
 
@@ -16,12 +17,13 @@ const Announcement: FC<AnnouncementProps> = ({ setIsAnnouncementOpen }) => {
     return (
         <Root>
             <div>
-                ☆ If you like Crakd, give us a follow on{' '}
+                If you like Crakd, give us a follow on
                 <Link href="https://twitter.com/CrakdGG" target="__blank" rel="noreferrer noopener">
                     Twitter
-                </Link>{' '}
-                ☆
+                </Link>
             </div>
+
+            <Spacing right="xs" />
 
             <div>
                 <Follow username="CrakdGG" />

@@ -35,7 +35,7 @@ export const ImageContainer = styled.div`
 
 export const Image = styled.img`
   width: 100%;
-  height: 100%;
+  height: 150px;
   object-fit: cover;
 `;
 
@@ -78,6 +78,7 @@ export const Duration = styled.span`
 `;
 
 export const Card = styled.div`
+  width: 100%;
   border-radius: ${(p) => p.theme.radius.sm};
   background: '#111111';
   display: flex;

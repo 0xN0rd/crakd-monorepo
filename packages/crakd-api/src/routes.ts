@@ -1,5 +1,6 @@
 import { Request, Response, Router } from 'express';
 import passport from 'passport';
+import multer from 'multer';
 import {
     AuthController,
     EntryController,
@@ -12,6 +13,9 @@ import { checkIfAdmin, checkIfSuperAdmin, checkIfUser } from './utils/protectedR
 import { withUser } from './utils/withUser';
 
 const router = Router();
+
+const storage = multer.memoryStorage();
+const multerUpload = multer({ storage });
 
 router.get('/', (req: Request, res: Response) => res.send('echo'));
 
@@ -36,6 +40,7 @@ router.get('/facebook/callback', AuthController.facebookCallback);
 router.get('/users/get-users', withUser, UserController.getUsers);
 router.get('/users/online-users', withUser, UserController.onlineUsers);
 router.get('/users/new-users', withUser, UserController.newUsers);
+router.post('/users/upload-photo', [checkIfUser, multerUpload.single('image')], UserController.uploadPhoto);
 router.get('/users/:id', UserController.user);
 router.delete('/user/ban-user', checkIfSuperAdmin, UserController.banUser);
 

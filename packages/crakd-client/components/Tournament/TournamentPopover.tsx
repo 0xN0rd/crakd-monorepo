@@ -2,16 +2,17 @@ import React, { FC, useState, useRef } from 'react';
 import axios from 'axios';
 import { useMutation, useQueryClient } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Confirm } from '../../ui';
-import { ThreeDotsIcon } from '../../ui/icons';
-import { useClickOutside } from '../../../utils';
-import { Popover, PopoverContent } from './style';
-import { openAlert, AlertTypes } from '../../../store/alert';
+import { Button, Confirm } from '../ui';
+import { ThreeDotsIcon } from '../ui/icons';
+import { useClickOutside } from '../../utils';
+import { Popover, PopoverContent } from '../Sidebar/style';
+import { openAlert, AlertTypes } from '../../store/alert';
 import { useRouter } from 'next/router';
-import { RootState } from '../../../store';
-import { UserRole } from '../../../constants';
+import { RootState } from '../../store';
+import { UserRole } from '../../constants';
+import { identity } from 'lodash';
 
-interface EntryCardPopoverProps {
+interface TournamentPopoverProps {
     entryId: string;
     tournamentId: string;
     queryKey: any;
@@ -20,11 +21,11 @@ interface EntryCardPopoverProps {
 }
 
 const deleteEntry = async ({ id: id }) => {
-    const newEntry = await axios.delete('/entries/delete', { data: { id } });
+    const newEntry = await axios.delete('/entries/delete', { data: { id} });
     return newEntry.data;
 };
 
-const EntryCardPopover: FC<EntryCardPopoverProps> = ({
+const TournamentPopover: FC<TournamentPopoverProps> = ({
     entryId,
     queryKey,
     refetch,
@@ -47,7 +48,7 @@ const EntryCardPopover: FC<EntryCardPopoverProps> = ({
         try {
             const deletedEntry = await deleteEntryMutation({ id: entryId });
 
-            if (router.route !== '/entries/[id]') {
+            if (router.route !== '/entry/[id]') {
                 queryClient.setQueryData(queryKey, (existingEntries: any) => {
                     return {
                         ...existingEntries,
@@ -63,7 +64,7 @@ const EntryCardPopover: FC<EntryCardPopoverProps> = ({
                     type: AlertTypes.Success,
                 })
             );
-            if (router.route === '/entries/[id]') {
+            if (router.route === '/entry/[id]') {
                 router.push('/');
             }
         } catch (error) {
@@ -88,7 +89,7 @@ const EntryCardPopover: FC<EntryCardPopoverProps> = ({
                 isOpen={isConfirmOpen}
                 close={() => setIsConfirmOpen(false)}
                 onConfirm={removeEntry}
-                title="Delete the entry permanently?"
+                title="Delete entry permanently?"
             />
 
             <Button ghost onClick={() => setIsPopoverOpen(!isPopoverOpen)}>
@@ -98,15 +99,15 @@ const EntryCardPopover: FC<EntryCardPopoverProps> = ({
             {isPopoverOpen && (
                 <PopoverContent>
                     <Button color="text" text fullWidth radius="none" size="xs" onClick={openEntryCreate}>
-                        Edit Entry
+                        Edit
                     </Button>
                     <Button color="text" text fullWidth radius="none" size="xs" onClick={onOpenConfirm}>
-                        Delete Entry
+                        Delete
                     </Button>
                 </PopoverContent>
             )}
         </Popover>
-    );
+    )
 };
 
-export default EntryCardPopover;
+export default TournamentPopover;

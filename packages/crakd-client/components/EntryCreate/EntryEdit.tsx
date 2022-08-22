@@ -1,11 +1,9 @@
-import { FC, FormEvent, useState, Fragment } from 'react';
+import { FC, FormEvent, useState } from 'react';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useMutation, useQueryClient } from 'react-query';
 import { Tournament } from '../../constants';
-import { Spacing, Button, Modal, Select, Avatar, InputText, Text } from '../ui';
-import { SelectContainer } from './style';
-import { RootState } from '../../store';
+import { Spacing, Button, Modal, InputText, Text } from '../ui';
 import { AlertTypes, openAlert } from '../../store/alert';
 import { updateCache } from './cache';
 
@@ -39,7 +37,7 @@ interface EntryCreateProps {
     closeEntryCreate: () => void;
 }
 
-const EntryCreate: FC<EntryCreateProps> = ({
+const EntryEdit: FC<EntryCreateProps> = ({
     isEntryCreateOpen,
     closeEntryCreate,
     tournamentId,
@@ -48,7 +46,6 @@ const EntryCreate: FC<EntryCreateProps> = ({
     position,
     queryKey,
 }) => {
-    const authUser = useSelector((state: RootState) => state.auth.user);
     const queryClient = useQueryClient();
     const tournaments: Tournament[] = queryClient.getQueryData(['tournaments']);
     const dispatch = useDispatch();
@@ -120,30 +117,9 @@ const EntryCreate: FC<EntryCreateProps> = ({
         setFormValues({ ...formValues, [name]: value });
     };
 
-    const isFormValid = () => {
-        const { score, position, tournamentId } = formValues;
-        return score && position && tournamentId;
-    };
-
     return (
-        <Modal title={entryId ? 'Edit Entry' : 'Create Entry'} isOpen={isEntryCreateOpen} close={close}>
+        <Modal title={entryId ? 'Create Entry' : 'Edit Entry'} isOpen={isEntryCreateOpen} close={close}>
             <form onSubmit={handleSubmit}>
-                {/*
-                <SelectContainer>
-                    <Avatar size={1.25} image={authUser.image} />
-                    <Spacing left="sm">
-                        <Text>Tournament</Text>
-                        <Spacing bottom="xs" />
-                        <Select onChange={handleChange} name="tournamentId" defaultValue="select">
-                            <option value="select">Select</option>
-                            {tournaments?.map((tournament: Tournament) => (
-                                <Fragment key={tournament._id}>
-                                    <option value={tournament._id}>{tournament.name}</option>
-                                </Fragment>
-                            ))}
-                        </Select>
-                    </Spacing>
-                </SelectContainer>
 
                 <Spacing top="xs" bottom="xs">
                     <Text>Score</Text>
@@ -156,11 +132,10 @@ const EntryCreate: FC<EntryCreateProps> = ({
                     <Spacing bottom="xs" />
                     <InputText name="position" onChange={handleChange} value={formValues.position} placeholder={1} />
                 </Spacing>
-                */}
 
                 <Spacing top="sm" />
 
-                <Text size="md">Enter tournament?</Text>
+                <Text size="md">Edit entry?</Text>
 
                 <Spacing top="sm" bottom="sm" />
 
@@ -176,4 +151,4 @@ const EntryCreate: FC<EntryCreateProps> = ({
     );
 };
 
-export default EntryCreate;
+export default EntryEdit;

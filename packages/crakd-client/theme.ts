@@ -75,18 +75,18 @@ const theme: Theme = {
 
   colors: {
     general: {
-      primary: '#0084FF',
+      primary: '#ff0080',
       secondary: '#f50057',
       success: '#00A699',
       warning: '#FFB818',
       info: '#4169E1',
-      error: '#F44335',
+      error: '#ea3323',
       link: '#0073F5',
-      body: '#1C1C1E',
+      body: '#111111',
       white: '#fff',
-      black: '#2C2C2E',
+      black: '#0e0e10',
       text: '#E5E5EA',
-      textSecondary: '#64676B',
+      textSecondary: '#8a8f98',
       disabled: '#444950',
       transparent: 'transparent',
       primaryGradient: 'linear-gradient(to right, #56ccf2, #2f80ed)',

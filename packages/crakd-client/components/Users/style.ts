@@ -7,7 +7,7 @@ export const Root = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: ${(p) => p.theme.colors.general.black};
-  padding: ${(p) => p.theme.spacing.sm};
+  padding: ${(p) => p.theme.spacing.xs};
   border-radius: ${(p) => p.theme.radius.sm};
   transition: border-color 0.1s;
   box-shadow: ${(p) => p.theme.shadows.sm};
@@ -28,14 +28,15 @@ export const Wrapper = styled.div`
 export const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
-  border-radius: 5%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   overflow: hidden;
   flex-shrink: 0;
 `;
 
 export const Image = styled.img`
   width: 100%;
-  height: 100%;
+  height: 150px;
   object-fit: cover;
 `;
 
@@ -62,4 +63,23 @@ export const UserName = styled.span`
   font-size: ${(p) => p.theme.font.size.xs};
   color: ${(p) => p.theme.colors.grey[50]};
   margin-top: 4px;
+  margin-bottom: 1rem;
+`;
+
+export const Card = styled.div`
+  width: 100%;
+  border-radius: ${(p) => p.theme.radius.sm};
+  background: '#111111';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-clip: content-box, border-box;
+  background-image: linear-gradient(#111111, #111111), linear-gradient(to right, #333333, #333333);
+  padding: 1px;
+  cursor: pointer;
+
+  &:hover {
+    outline: none;
+    background-image: linear-gradient(#111111, #111111), linear-gradient(to right, #ff0080, #ff0080);
+  }
 `;

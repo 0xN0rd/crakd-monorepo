@@ -1,6 +1,14 @@
 import React, { FC, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Root, ImageContainer, Image, InitialLetters, Gamertag, UserName } from './style';
+import {
+    Root,
+    ImageContainer,
+    Image,
+    InitialLetters,
+    Gamertag,
+    UserName,
+    Card,
+} from './style';
 import { Link, Spacing } from '../ui';
 import theme from '../../theme';
 import { RootState } from '../../store';
@@ -32,14 +40,14 @@ const UsersCard: FC<UsersCardProps> = ({ user, queryKey }) => {
 
     return (
         <Link href={`/profile/${user._id}`} disableBorderOnHover>
-            <Root>
-                <ImageContainer>
-                    {image ? (
-                        <Image alt={user.fullName} src={image} />
-                    ) : (
-                        <InitialLetters color={color}>{splitFullName()}</InitialLetters>
-                    )}
-                </ImageContainer>
+            <Card>
+                    <ImageContainer>
+                        {image ? (
+                            <Image alt={user.fullName} src={image} />
+                        ) : (
+                            <InitialLetters color={color}>{splitFullName()}</InitialLetters>
+                        )}
+                    </ImageContainer>
 
                 <Spacing top="sm" bottom="xs">
                     <Link href={`/profile/${user._id}`} disableBorderOnHover weight="bold" color="text">
@@ -48,7 +56,7 @@ const UsersCard: FC<UsersCardProps> = ({ user, queryKey }) => {
                 </Spacing>
 
                 {username ? <UserName>@{username}</UserName> : <Spacing top="sm" />}
-            </Root>
+            </Card>
         </Link>
     );
 };

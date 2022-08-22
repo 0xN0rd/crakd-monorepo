@@ -78,13 +78,11 @@ export const updateEntry = async(
   score: number,
   position: number,
   tournamentId: string,
-  userId: string,
 ): Promise<any> => {
   const fields = {
     score,
     position,
     tournament: tournamentId,
-    user: userId,
   };
 
   const updatedEntry = await Entry.findOneAndUpdate({ _id: entryId }, { ...fields }, { new: true })

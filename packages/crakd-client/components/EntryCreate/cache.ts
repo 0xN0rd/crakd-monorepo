@@ -16,9 +16,10 @@ export const updateEntriesByUserIdCache = ({
 }: updateCacheProps) => {
     if (operation === 'create') {
         queryClient.setQueryData(queryKey, (existingEntries: any) => {
+            console.log(existingEntries);
             return {
                 ...existingEntries,
-                pages: [[entry], ...existingEntries.page],
+                pages: [[entry], ...existingEntries.pages],
             };
         });
         return;
@@ -59,8 +60,8 @@ export const updateSingleEntry = ({ queryKey, queryClient, entry }: updateCacheP
 export const updateEntriesByTournamentName = ({
     queryKey,
     queryClient,
-    entry,
     operation,
+    entry,
     notAddingToCurrentTournament,
 }: updateCacheProps) => {
     if (notAddingToCurrentTournament && operation === 'create') {
@@ -104,9 +105,11 @@ export const updateCache = ({
 
     switch (key) {
         case 'entriesByUserId':
+            console.log('entriesByUserId');
             updateEntriesByUserIdCache({ queryKey, queryClient, operation, entry });
             break;
         case 'entry':
+            console.log('entry');
             updateSingleEntry({ queryKey, queryClient, operation, entry });
             break;
         case 'entriesByTournamentName':

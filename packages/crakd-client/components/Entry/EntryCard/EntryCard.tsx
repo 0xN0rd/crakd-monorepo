@@ -1,49 +1,48 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import EntryCardPopover from './EntryCardPopover';
 import {
     Root,
-    Image,
-    TitleContainer,
-    Title,
     Top,
     Author,
     Name,
     CreatedAt,
-    StyledButton,
 } from './style';
 import { Spacing, Avatar, Button, Link, Text } from '../../ui';
 import { RootState } from '../../../store';
 import { Entry, UserRole } from '../../../constants';
+import EntryCreate from '../../EntryCreate';
 import { timeAgo } from '../../../utils';
-import useClickOutside from '../../../utils/useClickOutside';
-import SeeMore from '../../SeeMore';
-import TournamentsPage from '../../../pages/tournaments';
 
 interface EntryCardProps {
     entry: Entry;
     queryKey: any;
     displayTournamentName?: boolean;
     refetch?: any;
-    disableNavigation?: boolean;
 }
 
 const EntryCard: FC<EntryCardProps> = ({
     entry,
     queryKey,
     displayTournamentName,
-    disableNavigation,
     refetch,
 }) => {
     const authUser = useSelector((state: RootState) => state.auth.user);
-    const entryCardTitle = (
-        <Title>
-            <SeeMore>{entry.tournament?.name}</SeeMore>
-        </Title>
-    );
+    const [isEntryCreateOpen, setIsEntryCreateOpen] = useState(false);
+    console.log(entry);
 
     return (
         <Root>
+            {authUser && isEntryCreateOpen && (
+                <EntryCreate
+                    isEntryCreateOpen={isEntryCreateOpen}
+                    closeEntryCreate={() => setIsEntryCreateOpen(false)}
+                    entryId={entry._id}
+                    tournamentId={entry.tournament?._id}
+                    queryKey={queryKey}
+                />
+            )}
+
             <Top>
                 <Author>
                     <Link disableBorderOnHover href={`/profile/${entry.user?._id}`}>
@@ -54,6 +53,14 @@ const EntryCard: FC<EntryCardProps> = ({
                         <Link href={`/profile/${entry.user?._id}`} color="text">
                             <Name>{entry.user?.gamertag} </Name>
                         </Link>
+
+                        <Spacing left="lg" />
+                        <Text>Position:</Text>{' '}
+                        <Text>{entry.position}</Text>
+
+                        <Spacing left="lg" />
+                        <Text>Score:</Text>{' '}
+                        <Text>{entry.score}</Text>
                         <CreatedAt>
                             {timeAgo(entry.createdAt)}
                             {displayTournamentName && (
@@ -68,6 +75,16 @@ const EntryCard: FC<EntryCardProps> = ({
                         </CreatedAt>
                     </Spacing>
                 </Author>
+
+                {(authUser?.role === UserRole.SuperAdmin) && (
+                    <EntryCardPopover
+                        queryKey={queryKey}
+                        entryId={entry._id}
+                        tournamentId={entry.tournament?._id}
+                        openEntryCreate={() => setIsEntryCreateOpen(true)}
+                        refetch={refetch}
+                    />
+                )}
             </Top>
         </Root>
     );

@@ -57,9 +57,9 @@ const Profile: FC<ProfileProps> = ({ user, queryKey }) => {
 
     const useSpecificTwitchComponent = () => {
         if (isSmallScreen) {
-            return <ReactTwitchEmbedVideo channel="rush" layout="video" height="180" width="350" />;
+            return <ReactTwitchEmbedVideo channel="tfue" layout="video" height="180" width="350" />;
         } else if (!isSmallScreen) {
-            return <ReactTwitchEmbedVideo channel="rush" layout="video" height="360" width="600" />;
+            return <ReactTwitchEmbedVideo channel="tfue" layout="video" height="360" width="600" />;
         }
     };
 
