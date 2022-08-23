@@ -29,7 +29,7 @@ const Home: FC = () => {
 
                         <Spacing top="sm">
                             <Spacing top="sm" bottom="sm">
-                                <Text size="lg">{!authUser && 'Join and'} Enter League of Legends tournaments </Text>
+                                <Text size="lg">{!authUser && 'Join and'} Enter weekly tournaments </Text>
                                 <Spacing top="xs" />
                                 <Text size="lg">for solo queue players.</Text>
                             </Spacing>

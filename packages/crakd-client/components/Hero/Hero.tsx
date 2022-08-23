@@ -12,7 +12,7 @@ const Hero: FC = () => {
                     </div>
                     <div className="hero appear appear-second">
                         <h1 className="second-gradient">
-                            QUEUE.
+                            PLAY.
                         </h1>
                     </div>
                     <div className="hero appear appear-third">
