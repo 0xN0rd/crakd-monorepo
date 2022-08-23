@@ -121,6 +121,8 @@ const TournamentPage: FC<TournamentPageProps> = ({ tournament }) => {
                                     <Th>Position</Th>
                                     <Th>Username</Th>
                                     <Th>Gamertag</Th>
+                                    <Th>Platform</Th>
+                                    <Th>Region</Th>
                                     <Th>Score</Th>
                                 </Tr>
                             </thead>
@@ -132,7 +134,9 @@ const TournamentPage: FC<TournamentPageProps> = ({ tournament }) => {
                                             <Tr key={entry._id}>
                                                 <Td>{entry.position}</Td>
                                                 <Td>{entry.user.username}</Td>
-                                                <Td>{entry.user.gamertag}</Td>
+                                                <Td>{entry.gamertag}</Td>
+                                                <Td>{entry.platform}</Td>
+                                                <Td>{entry.region}</Td>
                                                 <Td>{entry.score}</Td>
                                                 <Td>
                                                     {authUser?.role === UserRole.SuperAdmin && (

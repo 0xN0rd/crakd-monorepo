@@ -6,6 +6,9 @@ const EntrySchema = new Schema(
   {
     score: Number,
     position: Number,
+    gamertag: String,
+    platform: String,
+    region: String,
     tournament: {
       type: Schema.Types.ObjectId,
       ref: 'Tournament',

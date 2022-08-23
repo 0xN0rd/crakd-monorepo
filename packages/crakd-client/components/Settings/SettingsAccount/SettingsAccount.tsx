@@ -11,6 +11,7 @@ interface AccountSettings {
     fullName: string;
     username: string;
     gamertag: string;
+    twitchId: string;
     city: string;
     state: string;
     country: string;
@@ -31,6 +32,7 @@ const SettingsAccount: FC = () => {
         fullName: authUser.fullName,
         username: authUser.username || '',
         gamertag: authUser.gamertag || '',
+        twitchId: authUser.twitchId || '',
         city: authUser.city || '',
         state: authUser.state || '',
         country: authUser.country || '',
@@ -54,6 +56,7 @@ const SettingsAccount: FC = () => {
                 fullName: values.fullName,
                 username: values.username,
                 gamertag: values.gamertag,
+                twitchId: values.twitchId,
                 city: values.city,
                 state: values.state,
                 country: values.country,
@@ -64,6 +67,7 @@ const SettingsAccount: FC = () => {
                     fullName: values.fullName,
                     username: values.username,
                     gamertag: values.gamertag,
+                    twitchId: values.twitchId,
                     city: values.city,
                     state: values.state,
                     country: values.country,
@@ -154,6 +158,16 @@ const SettingsAccount: FC = () => {
                     decsription="TurboElon42069"
                     value={values.gamertag}
                     error={errors.gamertag}
+                    onChange={onChange}
+                />
+
+                <Spacing top="md" />
+
+                <InputText
+                    name="twitchId"
+                    label="Twitch ID"
+                    decsription="Tfue"
+                    value={values.twitchId}
                     onChange={onChange}
                 />
 

@@ -35,6 +35,9 @@ export const updateEntriesByUserIdCache = ({
                             ...e,
                             score: entry.score,
                             position: entry.position,
+                            gamertag: entry.gamertag,
+                            platform: entry.platform,
+                            region: entry.region,
                             tournamentId: entry.tournament._id,
                         };
                     } else {
@@ -52,6 +55,9 @@ export const updateSingleEntry = ({ queryKey, queryClient, entry }: updateCacheP
             ...existingEntry,
             score: entry.score,
             position: entry.position,
+            gamertag: entry.gamertag,
+            platform: entry.platform,
+            region: entry.region,
             tournamentId: entry.tournament._id,
         };
     });

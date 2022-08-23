@@ -43,7 +43,7 @@ const Modal: FC<ModalProps> = ({
   return (
     <Overlay>
       <Root>
-        <Container centered padding={padding} bgColor="body" bordered={noBorder} maxWidth={maxWidth || 'sm'} ref={contentRef}>
+        <Container padding={padding} bgColor="body" bordered={noBorder} maxWidth={maxWidth || 'sm'} ref={contentRef}>
           {!hideHeading && (
             <Heading hideTitleBorder={hideTitleBorder}>
               <div />

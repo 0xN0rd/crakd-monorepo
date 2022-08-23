@@ -15,6 +15,7 @@ export interface AuthUser {
   state?: string;
   country?: string;
   gamertag?: string;
+  twitchId?: string;
   facebookId?: string;
   googleId?: string;
 }

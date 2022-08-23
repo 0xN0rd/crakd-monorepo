@@ -31,18 +31,18 @@ const EntryController = {
     },
     create: async (req: Request, res: Response): Promise<any> => {
         const authUser = req.user as AuthUser;
-        const { score, position, tournamentId } = req.body;
+        const { score, position, gamertag, platform, region, tournamentId } = req.body;
 
         if (!score && !position && !tournamentId) {
             return res.status(400).send("Missing the 3 params");
         }
 
-        const newEntry: any = await createEntry(score, position, tournamentId, authUser._id);
+        const newEntry: any = await createEntry(score, position, gamertag, platform, region, tournamentId, authUser._id);
         return res.send(newEntry);
     },
     update: async (req: Request, res: Response): Promise<any> => {
         const authUser = req.user as AuthUser;
-        const { entryId, score, position, tournamentId } = req.body;
+        const { entryId, score, position, gamertag, platform, region, tournamentId } = req.body;
 
         if (authUser.role !== UserRole.SuperAdmin) {
             const entry: any = await entryById(entryId);
@@ -51,7 +51,7 @@ const EntryController = {
             }
         }
 
-        const updatedEntry = await updateEntry(entryId, score, position, tournamentId);
+        const updatedEntry = await updateEntry(entryId, score, position, gamertag, platform, region, tournamentId);
         return res.send(updatedEntry);
     },
     delete: async (req: Request, res: Response): Promise<any> => {

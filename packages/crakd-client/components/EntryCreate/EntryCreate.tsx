@@ -3,27 +3,33 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMutation, useQueryClient } from 'react-query';
 import { Tournament } from '../../constants';
-import { Spacing, Button, Modal, Select, Avatar, InputText, Text } from '../ui';
+import { Spacing, Button, Modal, Select, InputText, Text } from '../ui';
 import { SelectContainer } from './style';
 import { RootState } from '../../store';
 import { AlertTypes, openAlert } from '../../store/alert';
 import { updateCache } from './cache';
 
-const createEntry = async ({ score, position, tournamentId }) => {
+const createEntry = async ({ score, position, gamertag, platform, region, tournamentId }) => {
     const newEntry = await axios.post('/entries/create', {
         score: score,
         position: position,
+        gamertag: gamertag,
+        platform: platform,
+        region: region,
         tournamentId: tournamentId,
     });
     console.log(newEntry);
     return newEntry.data;
 };
 
-const updateEntry = async ({ entryId, score, position, tournamentId }) => {
+const updateEntry = async ({ entryId, score, position, gamertag, platform, region, tournamentId }) => {
     const updatedEntry = await axios.put('/entries/update', {
         entryId: entryId,
         score: score,
         position: position,
+        gamertag: gamertag,
+        platform: platform,
+        region: region,
         tournamentId: tournamentId,
     });
     return updatedEntry.data;
@@ -34,6 +40,9 @@ interface EntryCreateProps {
     entryId?: string;
     score?: number;
     position?: number;
+    gamertag?: string;
+    platform?: string;
+    region?: string;
     tournamentId?: string;
     queryKey: any;
     closeEntryCreate: () => void;
@@ -46,6 +55,9 @@ const EntryCreate: FC<EntryCreateProps> = ({
     entryId,
     score,
     position,
+    gamertag,
+    platform,
+    region,
     queryKey,
 }) => {
     const authUser = useSelector((state: RootState) => state.auth.user);
@@ -55,9 +67,19 @@ const EntryCreate: FC<EntryCreateProps> = ({
     const initialState = {
         score: score || 0,
         position: position || 1,
+        gamertag: gamertag || '',
+        platform: platform || '',
+        region: region || '',
         tournamentId: tournamentId ? tournamentId : tournaments && tournaments[0]?._id,
     };
-    const [formValues, setFormValues] = useState<{ score: number; position: number; tournamentId: string; }>(initialState);
+    const [formValues, setFormValues] = useState<{
+        score: number;
+        position: number;
+        gamertag: string;
+        platform: string;
+        region: string;
+        tournamentId: string;
+    }>(initialState);
     const { mutateAsync: createEntryMutation, isLoading: isEntryCreateLoading } = useMutation(createEntry);
     const { mutateAsync: updateEntryMutation, isLoading: isEntryUpdateLoading } = useMutation(updateEntry);
 
@@ -81,6 +103,9 @@ const EntryCreate: FC<EntryCreateProps> = ({
                     entryId,
                     score: formValues.score,
                     position: formValues.position,
+                    gamertag: formValues.gamertag,
+                    platform: formValues.platform,
+                    region: formValues.region,
                     tournamentId: formValues.tournamentId,
                 });
                 updateCache({
@@ -121,42 +146,44 @@ const EntryCreate: FC<EntryCreateProps> = ({
     };
 
     const isFormValid = () => {
-        const { score, position, tournamentId } = formValues;
-        return score && position && tournamentId;
+        const { gamertag, platform, region } = formValues;
+        return gamertag && platform && region;
     };
 
     return (
         <Modal title={entryId ? 'Edit Entry' : 'Create Entry'} isOpen={isEntryCreateOpen} close={close}>
             <form onSubmit={handleSubmit}>
-                {/*
-                <SelectContainer>
-                    <Avatar size={1.25} image={authUser.image} />
-                    <Spacing left="sm">
-                        <Text>Tournament</Text>
-                        <Spacing bottom="xs" />
-                        <Select onChange={handleChange} name="tournamentId" defaultValue="select">
-                            <option value="select">Select</option>
-                            {tournaments?.map((tournament: Tournament) => (
-                                <Fragment key={tournament._id}>
-                                    <option value={tournament._id}>{tournament.name}</option>
-                                </Fragment>
-                            ))}
+                <Spacing top="xs" bottom="sm">
+                    <Text>Gamertag</Text>
+                    <Spacing bottom="xs" />
+                    <InputText name="gamertag" onChange={handleChange} value={formValues.gamertag} placeholder="Enter gamertag" />
+                </Spacing>
+
+                <Spacing top="xs" bottom="sm">
+                    <Text>Platform</Text>
+                    <SelectContainer>
+                        <Select onChange={handleChange} name="platform" defaultValue="select">
+                            <option value="Select">Select</option>
+                            <option value="Xbox">Xbox</option>
+                            <option value="Playstation">Playstation</option>
+                            <option value="PC">PC</option>
                         </Select>
-                    </Spacing>
-                </SelectContainer>
+                    </SelectContainer>
+                </Spacing>
 
                 <Spacing top="xs" bottom="xs">
-                    <Text>Score</Text>
-                    <Spacing bottom="xs" />
-                    <InputText name="score" onChange={handleChange} value={formValues.score} placeholder={0} />
+                    <Text>Region</Text>
+                    <SelectContainer>
+                        <Select onChange={handleChange} name="region" defaultValue="Select">
+                            <option value="Select">Select</option>
+                            <option value="NA">NA</option>
+                            <option value="EU">EU</option>
+                            <option value="LatAm">LatAm</option>
+                            <option value="Asia">Asia</option>
+                            <option value="Oceania">Oceania</option>
+                        </Select>
+                    </SelectContainer>
                 </Spacing>
-
-                <Spacing bottom="xs">
-                    <Text>Position</Text>
-                    <Spacing bottom="xs" />
-                    <InputText name="position" onChange={handleChange} value={formValues.position} placeholder={1} />
-                </Spacing>
-                */}
 
                 <Spacing top="sm" />
 
@@ -169,7 +196,7 @@ const EntryCreate: FC<EntryCreateProps> = ({
                     fullWidth
                     type="submit"
                     color="primary"
-                    disabled={isEntryCreateLoading || isEntryUpdateLoading}
+                    disabled={!isFormValid() || isEntryCreateLoading || isEntryUpdateLoading}
                 >Confirm</Button>
             </form>
         </Modal>

@@ -8,17 +8,11 @@ import {
     CoverImageWrapper,
     ProfileImageWrapper,
     Info,
-    Actions,
-    Count,
-    ProfileInfoCard,
-    ProfileInfo1,
-    Bold,
-    ProfileInfoWrapper,
 } from './style';
 import { useBreakpoints } from '../../utils';
 import UploadImage from '../UploadImage';
 import { RootState } from '../../store';
-import { Loading, H1, H5, Spacing, ButtonLink, Avatar, Container } from '../ui';
+import { Loading, H1, H5, Spacing, Avatar, Container } from '../ui';
 import dynamic from 'next/dynamic';
 
 interface ProfileProps {
@@ -57,9 +51,9 @@ const Profile: FC<ProfileProps> = ({ user, queryKey }) => {
 
     const useSpecificTwitchComponent = () => {
         if (isSmallScreen) {
-            return <ReactTwitchEmbedVideo channel="tfue" layout="video" height="180" width="350" />;
+            return <ReactTwitchEmbedVideo channel={user.twitchId} layout="video" height="180" width="350" />;
         } else if (!isSmallScreen) {
-            return <ReactTwitchEmbedVideo channel="tfue" layout="video" height="360" width="600" />;
+            return <ReactTwitchEmbedVideo channel={user.twitchId} layout="video" height="360" width="600" />;
         }
     };
 

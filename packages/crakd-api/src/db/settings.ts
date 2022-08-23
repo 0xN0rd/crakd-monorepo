@@ -11,13 +11,14 @@ export const updateProfile = async (
     fullName: string,
     username: string,
     gamertag: string,
+    twitchId: string,
     city: string,
     state: string,
     country: string
 ): Promise<any> => {
     const user = await User.findOneAndUpdate(
         { _id: id },
-        { fullName, username, gamertag, city, state, country },
+        { fullName, username, gamertag, twitchId, city, state, country },
         { new: true }
     );
     

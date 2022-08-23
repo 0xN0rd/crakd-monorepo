@@ -12,7 +12,8 @@ export interface AuthUser {
     email?: string;
     createdAt?: Date;
     gamertag?: string;
-    tournaments: [];
+    twitchId?: string;
+    entries: [];
     facebookId?: string;
     googleId?: string;
     city?: string;
@@ -35,6 +36,9 @@ export interface Entry {
     _id: string;
     score: number;
     position: number;
+    gamertag: string;
+    platform: string;
+    region: string;
     tournament: Tournament;
     user: any;
     createdAt: string;

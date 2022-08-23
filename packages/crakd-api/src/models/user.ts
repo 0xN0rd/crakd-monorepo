@@ -60,6 +60,10 @@ const UserSchema = new Schema(
       unique: true,
       default: '',
     },
+    twitchId: {
+      type: String,
+      default: '',
+    },
     facebookId: {
       type: String,
       default: '',
@@ -104,6 +108,7 @@ export interface IUser extends Document {
   facebookId: string;
   googleId: string;
   gamertag: string;
+  twitchId: string;
   verified: boolean;
   city: string;
   state: string;

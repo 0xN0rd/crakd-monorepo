@@ -30,7 +30,7 @@ const SettingsController = {
         return res.send({ total, verified });
     },
     updateProfile: async (req: Request, res: Response): Promise<any> => {
-        const { fullName, username, gamertag, city, state, country } = req.body;
+        const { fullName, username, gamertag, twitchId, city, state, country } = req.body;
         const authUser = req.user as AuthUser;
         const existingUser = await getUserByUsername(username);
 
@@ -43,6 +43,7 @@ const SettingsController = {
             fullName,
             username,
             gamertag,
+            twitchId,
             city,
             state,
             country

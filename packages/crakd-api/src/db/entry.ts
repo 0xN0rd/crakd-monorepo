@@ -55,12 +55,18 @@ export const getEntryById = async (id: string): Promise<any> => {
 export const createEntry = async(
   score: number,
   position: number,
+  gamertag: string,
+  platform: string,
+  region: string,
   tournamentId: string,
   userId: string,
 ): Promise<any> => {
   const newEntry = await new Entry({
     score: score,
     position: position,
+    gamertag: gamertag,
+    platform: platform,
+    region: region,
     tournament: tournamentId,
     user: userId
   }).save();
@@ -77,11 +83,17 @@ export const updateEntry = async(
   entryId: string,
   score: number,
   position: number,
+  gamertag: string,
+  platform: string,
+  region: string,
   tournamentId: string,
 ): Promise<any> => {
   const fields = {
     score,
     position,
+    gamertag,
+    platform,
+    region,
     tournament: tournamentId,
   };
 

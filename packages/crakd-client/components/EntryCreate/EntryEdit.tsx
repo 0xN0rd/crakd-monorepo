@@ -3,25 +3,32 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useMutation, useQueryClient } from 'react-query';
 import { Tournament } from '../../constants';
-import { Spacing, Button, Modal, InputText, Text } from '../ui';
+import { Spacing, Button, Modal, InputText, Select, Text } from '../ui';
+import { SelectContainer } from './style';
 import { AlertTypes, openAlert } from '../../store/alert';
 import { updateCache } from './cache';
 
-const createEntry = async ({ score, position, tournamentId }) => {
+const createEntry = async ({ score, position, gamertag, platform, region, tournamentId }) => {
     const newEntry = await axios.post('/entries/create', {
         score: score,
         position: position,
+        gamertag: gamertag,
+        platform: platform,
+        region: region,
         tournamentId: tournamentId,
     });
     console.log(newEntry);
     return newEntry.data;
 };
 
-const updateEntry = async ({ entryId, score, position, tournamentId }) => {
+const updateEntry = async ({ entryId, score, position, gamertag, platform, region, tournamentId }) => {
     const updatedEntry = await axios.put('/entries/update', {
         entryId: entryId,
         score: score,
         position: position,
+        gamertag: gamertag,
+        platform: platform,
+        region: region,
         tournamentId: tournamentId,
     });
     return updatedEntry.data;
@@ -32,6 +39,9 @@ interface EntryCreateProps {
     entryId?: string;
     score?: number;
     position?: number;
+    gamertag?: string;
+    platform?: string;
+    region?: string;
     tournamentId?: string;
     queryKey: any;
     closeEntryCreate: () => void;
@@ -44,6 +54,9 @@ const EntryEdit: FC<EntryCreateProps> = ({
     entryId,
     score,
     position,
+    gamertag,
+    platform,
+    region,
     queryKey,
 }) => {
     const queryClient = useQueryClient();
@@ -52,9 +65,19 @@ const EntryEdit: FC<EntryCreateProps> = ({
     const initialState = {
         score: score || 0,
         position: position || 1,
+        gamertag: gamertag || '',
+        platform: platform || '',
+        region: region || '',
         tournamentId: tournamentId ? tournamentId : tournaments && tournaments[0]?._id,
     };
-    const [formValues, setFormValues] = useState<{ score: number; position: number; tournamentId: string; }>(initialState);
+    const [formValues, setFormValues] = useState<{
+        score: number;
+        position: number;
+        gamertag: string;
+        platform: string;
+        region: string;
+        tournamentId: string;
+    }>(initialState);
     const { mutateAsync: createEntryMutation, isLoading: isEntryCreateLoading } = useMutation(createEntry);
     const { mutateAsync: updateEntryMutation, isLoading: isEntryUpdateLoading } = useMutation(updateEntry);
 
@@ -78,6 +101,9 @@ const EntryEdit: FC<EntryCreateProps> = ({
                     entryId,
                     score: formValues.score,
                     position: formValues.position,
+                    gamertag: formValues.gamertag,
+                    platform: formValues.platform,
+                    region: formValues.region,
                     tournamentId: formValues.tournamentId,
                 });
                 updateCache({
@@ -131,6 +157,38 @@ const EntryEdit: FC<EntryCreateProps> = ({
                     <Text>Position</Text>
                     <Spacing bottom="xs" />
                     <InputText name="position" onChange={handleChange} value={formValues.position} placeholder={1} />
+                </Spacing>
+
+                <Spacing top="xs" bottom="sm">
+                    <Text>Gamertag</Text>
+                    <Spacing bottom="xs" />
+                    <InputText name="gamertag" onChange={handleChange} value={formValues.gamertag} placeholder="Enter gamertag" />
+                </Spacing>
+
+                <Spacing top="xs" bottom="sm">
+                    <Text>Platform</Text>
+                    <SelectContainer>
+                        <Select onChange={handleChange} name="platform" defaultValue="select">
+                            <option value="Select">Select</option>
+                            <option value="Xbox">Xbox</option>
+                            <option value="Playstation">Playstation</option>
+                            <option value="PC">PC</option>
+                        </Select>
+                    </SelectContainer>
+                </Spacing>
+
+                <Spacing top="xs" bottom="xs">
+                    <Text>Region</Text>
+                    <SelectContainer>
+                        <Select onChange={handleChange} name="region" defaultValue="Select">
+                            <option value="Select">Select</option>
+                            <option value="NA">NA</option>
+                            <option value="EU">EU</option>
+                            <option value="LatAm">LatAm</option>
+                            <option value="Asia">Asia</option>
+                            <option value="Oceania">Oceania</option>
+                        </Select>
+                    </SelectContainer>
                 </Spacing>
 
                 <Spacing top="sm" />

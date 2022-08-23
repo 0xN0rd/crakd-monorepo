@@ -7,13 +7,14 @@ export interface AuthUser {
     email?: string;
     username?: string;
     gamertag?: string;
+    twitchId?: string;
     fullName?: string;
     facebookId?: string;
     googleId?: string;
     city?: string;
     state?: string;
     country?: string;
-    tournaments: any[];
+    entries: any[];
     isOnline: boolean;
     image?: string;
     imagePublicId?: string;
