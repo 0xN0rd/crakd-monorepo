@@ -29,7 +29,6 @@ const EntryCard: FC<EntryCardProps> = ({
 }) => {
     const authUser = useSelector((state: RootState) => state.auth.user);
     const [isEntryCreateOpen, setIsEntryCreateOpen] = useState(false);
-    console.log(entry);
 
     return (
         <Root>

@@ -1,11 +1,10 @@
 import { FC, FormEvent, useState, Fragment } from 'react';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useMutation, useQueryClient } from 'react-query';
 import { Tournament } from '../../constants';
 import { Spacing, Button, Modal, Select, InputText, Text } from '../ui';
 import { SelectContainer } from './style';
-import { RootState } from '../../store';
 import { AlertTypes, openAlert } from '../../store/alert';
 import { updateCache } from './cache';
 
@@ -60,7 +59,6 @@ const EntryCreate: FC<EntryCreateProps> = ({
     region,
     queryKey,
 }) => {
-    const authUser = useSelector((state: RootState) => state.auth.user);
     const queryClient = useQueryClient();
     const tournaments: Tournament[] = queryClient.getQueryData(['tournaments']);
     const dispatch = useDispatch();
@@ -153,6 +151,21 @@ const EntryCreate: FC<EntryCreateProps> = ({
     return (
         <Modal title={entryId ? 'Edit Entry' : 'Create Entry'} isOpen={isEntryCreateOpen} close={close}>
             <form onSubmit={handleSubmit}>
+                {entryId && (
+                    <>
+                        <Spacing top="xs" bottom="xs">
+                            <Text>Score</Text>
+                            <Spacing bottom="xs" />
+                            <InputText name="score" onChange={handleChange} value={formValues.score} placeholder={0} />
+                        </Spacing>
+
+                        <Spacing bottom="xs">
+                            <Text>Position</Text>
+                            <Spacing bottom="xs" />
+                            <InputText name="position" onChange={handleChange} value={formValues.position} placeholder={1} />
+                        </Spacing>
+                    </>
+                )}
                 <Spacing top="xs" bottom="sm">
                     <Text>Gamertag</Text>
                     <Spacing bottom="xs" />
