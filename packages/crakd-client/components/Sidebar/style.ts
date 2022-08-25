@@ -104,3 +104,23 @@ export const LI = styled.li<LIProps>`
     opacity: 1;
   }
 `;
+
+export const SocialButton = styled.a`
+  width: 50%;
+  display: block;
+  border-radius: ${(p) => p.theme.radius.sm};
+  padding: ${(p) => p.theme.spacing.xs} ${(p) => p.theme.spacing.xs};
+  color: ${(p) => p.theme.colors.general.textSecondary};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: ${(p) => p.theme.font.size.xs};
+  cursor: pointer;
+  margin-bottom: ${(p) => p.theme.spacing.xs};
+  transition: border 0.3s;
+  text-decoration: none;
+
+  &:hover {
+    color: ${(p) => p.theme.colors.general.primary};
+  }
+`;

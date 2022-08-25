@@ -6,6 +6,7 @@ export { default as UserIcon } from './UserIcon';
 export { default as UploadIcon } from './UploadIcon';
 export { default as LikeIcon } from './LikeIcon';
 export { default as CommentIcon } from './CommentIcon';
+export { default as DiscordIcon } from './DiscordIcon';
 export { default as FacebookIcon } from './FacebookIcon';
 export { default as GoogleIcon } from './GoogleIcon';
 export { default as GithubIcon } from './GithubIcon';

@@ -9,10 +9,11 @@ import {
     HouseColorfulIcon,
     PeopleColorfulIcon,
     TournamentColorfulIcon,
-    MessageColorfulIcon,
+    DiscordIcon,
+    TwitterIcon,
     DragIcon,
 } from '../ui/icons';
-import { Root, UL, LI, TournamentName, DragButton } from './style';
+import { Root, UL, LI, TournamentName, DragButton, SocialButton } from './style';
 import TournamentPopover from './TournamentPopover';
 import { useRouter } from 'next/router';
 import { RootState } from '../../store';
@@ -166,6 +167,19 @@ const Sidebar: ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = ({ isOpe
                     Create Tournament
                 </Button>
             )}
+
+            <Spacing bottom="md"  />
+
+            <SocialButton href="https://twitter.com/CrakdGG">
+                <TwitterIcon color="twitter" />
+                <Spacing right="xs" />
+                Twitter
+            </SocialButton>
+            <SocialButton href="https://discord.gg/mZHYP22JkQ">
+                <DiscordIcon color="facebook" />
+                <Spacing right="xs" />
+                Discord
+            </SocialButton>
         </Root>
     );
 };
