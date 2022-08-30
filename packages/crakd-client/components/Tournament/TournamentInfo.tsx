@@ -36,7 +36,7 @@ const TournamentInfo: FC<TournamentInfoProps> = ({ name, description, format, du
                 </P>
             </Spacing>
 
-            <Spacing top="xxs">
+            <Spacing top="xxs" bottom="md">
                 <P color="textSecondary" size="xs">
                     {duration}
                 </P>
@@ -52,6 +52,8 @@ const TournamentInfo: FC<TournamentInfoProps> = ({ name, description, format, du
                     <Spacing left="xxs" /> Rules
                 </StyledButton>
             </RulesButton>
+
+            <Spacing bottom="xxs" />
 
             {game === 'Warzone' && showRules && (
                 <StyledRules>
