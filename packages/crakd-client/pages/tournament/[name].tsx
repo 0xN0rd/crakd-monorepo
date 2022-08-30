@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import Layout from '../../components/Layout';
 import { EntryCreateButton } from '../../components/Entry';
-import EntryCardPopover from '../../components/Entry/EntryCard';
 import { TournamentPopover } from '../../components/Tournament';
 import EntryEdit from '../../components/EntryCreate/EntryEdit';
-import { Container, LoadingDots, Skeleton, Spacing, Button, Text, Empty, H2 } from '../../components/ui';
+import { Container, Skeleton, Spacing, Button, Text, Empty } from '../../components/ui';
 import {
     TableContainer,
     Table,
@@ -22,7 +21,6 @@ import { TournamentInfo } from '../../components/Tournament';
 import { TournamentIcon } from '../../components/ui/icons';
 import { openAuthPopup, PopupType } from '../../store/auth';
 import { useInfiniteScroll } from '../../utils';
-import { userInfo } from 'os';
 
 const fetchTournamentByName = async ( tournamentName: string ) => {
     const { data } = await axios.get(`/tournaments/${tournamentName}`);
@@ -77,7 +75,7 @@ const TournamentPage: FC<TournamentPageProps> = ({ tournament }) => {
         <Layout>
             <Seo title={tournament.name} />
             <Spacing bottom="sm">
-                <TournamentInfo name={tournament.name} description={tournament.description} format={tournament.format} duration={tournament.duration} />
+                <TournamentInfo name={tournament.name} description={tournament.description} format={tournament.format} duration={tournament.duration} game={tournament.game} />
             </Spacing>
 
             {authUser && <EntryCreateButton queryKey={['entriesByTournamentName', tournament._id]} tournament={tournament} />}

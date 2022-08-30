@@ -20,12 +20,18 @@ export const getTournamentsByDuration = async (duration: string): Promise<any> =
   return tournaments;
 };
 
+export const getTournamentsByGame = async (game: string): Promise<any> => {
+  const tournaments = await Tournament.find({ game }).sort({ order: 1 });
+  return tournaments;
+}
+
 export const createTournament = async (
   name: string,
   authRequired: boolean,
   order: number,
   format: string,
   duration: string,
+  game: string,
   description?: string,
 ): Promise<any> => {
   const newTournament = await Tournament.create({
@@ -34,6 +40,7 @@ export const createTournament = async (
     order,
     format,
     duration,
+    game,
     description,
   });
   return newTournament;
@@ -45,11 +52,12 @@ export const updateTournament = async (
   authRequired: boolean,
   format: string,
   duration: string,
+  game: string,
   description?: string,
 ): Promise<any> => {
   const updatedTournament = await Tournament.findOneAndUpdate(
     { _id: id },
-    { name, authRequired, description, format, duration },
+    { name, authRequired, description, format, duration, game },
     { new: true }
   );
   return updatedTournament;

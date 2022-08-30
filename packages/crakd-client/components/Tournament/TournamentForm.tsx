@@ -1,6 +1,6 @@
 import { FC, FormEvent, useEffect, useState } from 'react';
-import { InputText, Spacing, P, Toggle, Button, Text, TextAreaAutoSize } from '../ui';
-import { LabelAndToggle, ButtonContainer } from './style';
+import { InputText, Spacing, P, Toggle, Button, Text, TextAreaAutoSize, Select } from '../ui';
+import { LabelAndToggle, ButtonContainer, SelectContainer } from './style';
 import { Tournament } from '../../constants';
 
 export enum TournamentFormMode {
@@ -13,6 +13,7 @@ export interface ITournamentForm {
     authRequired: boolean;
     format: string;
     duration: string;
+    game: string;
 }
 
 interface TournamentFormProps {
@@ -31,6 +32,7 @@ const TournamentForm: FC<TournamentFormProps> = ({ tournament, loading, closeMod
         description: tournament?.description || '',
         format: tournament?.format || '',
         duration: tournament?.duration || '',
+        game: tournament?.game || '',
     };
     const [formValues, setFormValues] = useState(initialState);
     const [errorMessage, setErrorMessage] = useState('');
@@ -127,6 +129,23 @@ const TournamentForm: FC<TournamentFormProps> = ({ tournament, loading, closeMod
                     autoComplete="off"
                     placeholder="Choose a duration for the tournament"
                 />
+            </Spacing>
+
+            <Spacing top="sm" bottom="md">
+                <Text size="md">Game</Text>
+                <SelectContainer>
+                    <Select
+                        onChange={handleChange}
+                        name="game"
+                        defaultValue="Select"
+                    >
+                        <option value="Select">Select</option>
+                        <option value="Warzone">Warzone</option>
+                        <option value="Apex">Apex</option>
+                        <option value="CSGO">CSGO</option>
+                        <option value="LoL">LoL</option>
+                    </Select>
+                </SelectContainer>
             </Spacing>
 
             {errorMessage && formValues.name.length > 0 && (

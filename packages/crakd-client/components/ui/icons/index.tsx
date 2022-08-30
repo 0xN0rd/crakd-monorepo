@@ -27,6 +27,7 @@ export { default as TwitterIcon } from './TwitterIcon';
 export { default as LinkedInIcon } from './LinkedInIcon';
 export { default as LinkIcon } from './LinkIcon';
 export { default as PeopleIcon } from './PeopleIcon';
+export { default as RulesIcon } from './RulesIcon';
 export { default as SuccessIcon } from './SuccessIcon';
 export { default as HouseColorfulIcon } from './HouseColorfulIcon';
 export { default as PeopleColorfulIcon } from './PeopleColorfulIcon';

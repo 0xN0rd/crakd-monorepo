@@ -22,6 +22,10 @@ const TournamentSchema = new Schema(
       type: String,
       required: true,
     },
+    game: {
+      type: String,
+      required: true,
+    },
     order: {
       type: Number,
       required: true,

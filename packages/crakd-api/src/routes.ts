@@ -61,6 +61,7 @@ router.get('/tournaments', TournamentController.tournaments);
 router.get('/tournaments/:name', TournamentController.tournamentByName);
 router.get('/tournaments/:format', TournamentController.tournamentsByFormat);
 router.get('/tournaments/:duration', TournamentController.tournamentsByDuration);
+router.get('/tournaments/:game', TournamentController.tournamentsByGame);
 router.post('/tournaments/create', checkIfAdmin, TournamentController.create);
 router.put('/tournaments/update', checkIfAdmin, TournamentController.update);
 router.delete('/tournaments/delete', checkIfAdmin, TournamentController.delete);

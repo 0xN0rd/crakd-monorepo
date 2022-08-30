@@ -29,6 +29,7 @@ export interface Tournament {
     order: number;
     format: string;
     duration: string;
+    game: string;
     entries: [];
 }
 

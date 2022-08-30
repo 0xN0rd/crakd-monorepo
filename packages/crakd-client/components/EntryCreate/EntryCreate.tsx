@@ -175,7 +175,7 @@ const EntryCreate: FC<EntryCreateProps> = ({
                 <Spacing top="xs" bottom="sm">
                     <Text>Platform</Text>
                     <SelectContainer>
-                        <Select onChange={handleChange} name="platform" defaultValue="select">
+                        <Select onChange={handleChange} name="platform" defaultValue="Select">
                             <option value="Select">Select</option>
                             <option value="Xbox">Xbox</option>
                             <option value="Playstation">Playstation</option>

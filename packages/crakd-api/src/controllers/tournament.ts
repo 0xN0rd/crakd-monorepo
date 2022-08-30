@@ -4,6 +4,7 @@ import {
     getTournamentByName,
     getTournamentsByFormat,
     getTournamentsByDuration,
+    getTournamentsByGame,
     createTournament,
     updateTournament,
     reorderTournaments,
@@ -34,8 +35,13 @@ const TournamentController = {
         const tournaments = await getTournamentsByDuration(duration);
         return res.send(tournaments);
     },
+    tournamentsByGame: async (req: Request, res: Response): Promise<any> => {
+        const { game } = req.params;
+        const tournaments = await getTournamentsByGame(game);
+        return res.send(tournaments);
+    },
     create: async (req: Request, res: Response): Promise<any> => {
-        const { name, authRequired, order, format, duration, description } = req.body;
+        const { name, authRequired, order, format, duration, game, description } = req.body;
         const trimmedName = name.trim();
 
         if (tournamentNameReg.test(name) || !name || name.length > 20) {
@@ -49,11 +55,11 @@ const TournamentController = {
             return res.status(ErrorCodes.Bad_Request).send(`A tournament with the name "${trimmedName}" already exists.`);
         }
 
-        const newTournament = await createTournament(trimmedName, authRequired, order, format, duration, description);
+        const newTournament = await createTournament(trimmedName, authRequired, order, format, duration, game, description);
         return res.send(newTournament);
     },
     update: async (req: Request, res: Response): Promise<any> => {
-        const { _id, name, authRequired, format, duration, description, entries } = req.body;
+        const { _id, name, authRequired, format, duration, description, game } = req.body;
         const trimmedName = name.trim();
 
         if (tournamentNameReg.test(trimmedName) || !trimmedName || trimmedName.length > 20) {
@@ -66,7 +72,7 @@ const TournamentController = {
         if (tournamentExists && tournamentExists?._id.toString() !== _id) {
             return res.status(ErrorCodes.Bad_Request).send(`A tournament with the name "${trimmedName}" already exists.`);
         }
-        const updatedTournament = await updateTournament(_id, trimmedName, authRequired, format, duration, description);
+        const updatedTournament = await updateTournament(_id, trimmedName, authRequired, format, duration, game, description);
         return res.send(updatedTournament);
     },
     reorder: async (req: Request, res: Response): Promise<any> => {
