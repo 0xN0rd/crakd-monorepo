@@ -9,6 +9,7 @@ import {
     HouseColorfulIcon,
     PeopleColorfulIcon,
     TournamentColorfulIcon,
+    FAQColorfulIcon,
     DiscordIcon,
     TwitterIcon,
     DragIcon,
@@ -113,6 +114,20 @@ const Sidebar: ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = ({ isOpe
                         <PeopleColorfulIcon color={router.pathname === '/users' ? 'primary' : 'text'} />
                         {'\u00A0'}
                         {'\u00A0'} Users
+                    </ButtonLink>
+                </LI>
+                <LI>
+                    <ButtonLink
+                        fullWidth
+                        radius="none"
+                        href="/faq"
+                        color="text"
+                        active={router.pathname === '/faq'}
+                        size="sm"
+                    >
+                        <FAQColorfulIcon color={router.pathname === '/faq' ? 'primary' : 'text'} />
+                        {'\u00A0'}
+                        {'\u00A0'} FAQ
                     </ButtonLink>
                 </LI>
 

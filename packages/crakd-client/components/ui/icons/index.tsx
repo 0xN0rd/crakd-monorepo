@@ -13,6 +13,7 @@ export { default as GithubIcon } from './GithubIcon';
 export { default as SearchIcon } from './SearchIcon';
 export { default as NotFoundIcon } from './NotFoundIcon';
 export { default as EmptyIcon } from './EmptyIcon';
+export { default as FAQColorfulIcon } from './FAQColorfulIcon';
 export { default as NotificationIcon } from './NotificationIcon';
 export { default as EndCallIcon } from './EndCallIcon';
 export { default as TournamentIcon } from './TournamentIcon';
