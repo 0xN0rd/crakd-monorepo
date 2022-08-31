@@ -51,7 +51,7 @@ const Seo: FC<SeoProps> = ({ title, image, url }) => {
             <meta
                 key="og-description"
                 property="og:description"
-                content="League of Legends tournaments for solo queue players."
+                content="Contest platform for competitive solo queue gamers."
             />
         </NextHead>
     );
