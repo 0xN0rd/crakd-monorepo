@@ -73,7 +73,7 @@ const TournamentPage: FC<TournamentPageProps> = ({ tournament }) => {
 
     return (
         <Layout>
-            <Seo title={tournament.name} />
+            <Seo title={tournament.name} image="https://i.imgur.com/gyUSwee.png" />
             <Spacing bottom="sm">
                 <TournamentInfo name={tournament.name} description={tournament.description} format={tournament.format} duration={tournament.duration} game={tournament.game} />
             </Spacing>

@@ -49,7 +49,7 @@ const TournamentsPage: FC = () => {
 
     return (
         <Layout hideRightSidebar containerMaxWidth="md">
-            <Seo title="Tournaments" />
+            <Seo title="Tournaments" image="https://i.imgur.com/gyUSwee.png" />
             <Wrapper>
                 {data?.pages?.map((tournaments, i) => {
                     return (

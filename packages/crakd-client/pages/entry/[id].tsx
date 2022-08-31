@@ -22,7 +22,7 @@ const EntryPage: FC<EntryPageProps> = ({ entry }) => {
 
     return (
         <Layout hideRightSidebar marginTop="none">
-            <Seo title={entry.tournament} />
+            <Seo title={entry.tournament} image="https://i.imgur.com/gyUSwee.png" />
 
             <Container maxWidth="md" marginTop="sm">
                 <EntryCard

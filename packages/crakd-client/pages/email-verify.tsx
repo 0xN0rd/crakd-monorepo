@@ -55,7 +55,7 @@ const EmailVerify = ({ email, token }) => {
 
     return (
         <Container centered>
-            <Seo title="Email Verification" />
+            <Seo title="Email Verification" image="https://i.imgur.com/gyUSwee.png" />
             <Spacing top="md" bottom="lg">
                 <Link href="/" disableBorderOnHover>
                     <img alt="logo" style={{ height: 30 }} src={logo} />

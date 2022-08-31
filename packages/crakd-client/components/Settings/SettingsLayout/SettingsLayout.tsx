@@ -32,7 +32,7 @@ const SettingsLayout: FC<SettingsAppLayoutProps> = ({ children }) => {
 
     return (
         <>
-            <Seo title="Settings" />
+            <Seo title="Settings" image="https://i.imgur.com/gyUSwee.png" />
             <Header ref={hamburgerRef} toggleSidebar={toggleSidebar} />
             <Root>
                 <SettingsSidebar ref={sideBarRef} isOpen={isSideBarOpen} />

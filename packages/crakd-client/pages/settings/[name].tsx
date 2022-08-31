@@ -48,7 +48,7 @@ const Settings: FC = () => {
 
     return (
         <SettingsLayout>
-            <Seo title={currentTitle} />
+            <Seo title={currentTitle} image="https://i.imgur.com/gyUSwee.png" />
             {currentPage}
         </SettingsLayout>
     );

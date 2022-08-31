@@ -18,7 +18,7 @@ const Home: FC = () => {
 
     return (
         <Layout>
-            <Seo title="Home" />
+            <Seo title="Home" image="https://i.imgur.com/gyUSwee.png" />
             <div>
                 <Hero />
 

@@ -52,7 +52,7 @@ const UsersPage: FC = () => {
 
     return (
         <Layout hideRightSidebar containerMaxWidth="md">
-            <Seo title="Users" />
+            <Seo title="Users" image="https://i.imgur.com/gyUSwee.png" />
             <Wrapper>
                 {data?.pages?.map((users, i) => {
                     return (
