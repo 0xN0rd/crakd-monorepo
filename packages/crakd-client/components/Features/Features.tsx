@@ -15,7 +15,7 @@ const Features: FC = () => {
                     <div className="section-constainer section-description-wrapper">
                         <div className="section-container">
                             <p className="paragraph paragraph-medium paragaph-secondary">
-                                Daily or weekly tournament options make it easy to participate based on your schedule.    
+                                There&apos;s something for every gamer. Play againsts friends or everyone. Daily or weekly tournament options make it easy to participate based on your schedule.    
                             </p>
                         </div>
                     </div>
@@ -33,7 +33,7 @@ const Features: FC = () => {
                     <div className="section-constainer section-description-wrapper">
                         <div className="section-container">
                             <p className="paragraph paragraph-medium paragaph-secondary">
-                                You don&apos;t have to be a pro to win money playing League. Popping off in one game can send you to the top of the leaderboard.
+                                You don&apos;t have to be a pro to win cash prizes playing League. Popping off in one game can send you to the top of the leaderboard. No more falling to the losers bracket.
                             </p>
                         </div>
                     </div>
@@ -51,7 +51,7 @@ const Features: FC = () => {
                     <div className="section-constainer section-description-wrapper">
                         <div className="section-container">
                             <p className="paragraph paragraph-medium paragaph-secondary">
-                                Score points just by playing your favorite game. Each contest has many winners, not just a few.
+                                Score points just by playing your favorite game. Every contest has many winners. Let out your inner sweat and become one of them.
                             </p>
                         </div>
                     </div>

@@ -102,9 +102,11 @@ const Home: FC = () => {
 
                         <Spacing top="sm" bottom="xl">
                             <Spacing top="sm" bottom="sm">
-                                <Text size="lg">{!authUser && 'Join and'} Enter weekly tournaments </Text>
-                                <Spacing top="xs" />
-                                <Text size="lg">for solo queue players.</Text>
+                                <Text size="lg">
+                                    Play your favorite game with Crakd.
+                                    Enter one or multiple contests every week.
+                                    The opportunity is yours.
+                                </Text>
                             </Spacing>
                             {!authUser && (
                                 <Button main inline onClick={openAuthModal} weight="bold" color="primaryGradient">
