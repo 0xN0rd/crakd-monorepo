@@ -1,12 +1,70 @@
-import { FC, Fragment } from 'react';
+import { FC } from 'react';
+import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../components/Layout';
 import Hero from '../components/Hero';
+import Features from '../components/Features';
 import { RootState } from '../store';
 import { Container, Button, Spacing, Text, Link } from '../components/ui';
+import {
+    TableContainer,
+    Table,
+    Tr,
+    Th,
+    Td,
+} from '../components/Settings/SettingsUsers/style';
+import { CheckColorfulIcon } from '../components/ui/icons';
 import { openAuthPopup, PopupType } from '../store/auth';
-import { CommunityIcon } from '../components/ui/icons';
 import Seo from '../components/Seo';
+
+const ConditionTd = styled(Td)`
+    padding: 8px;
+    border-bottom: 1px solid #f4f4f725;
+`;
+
+const StyledTd = styled(Td)`
+    text-align: center;
+    padding: 8px;
+    border-bottom: 1px solid #f4f4f725;
+`;
+
+const COMPARISON = [
+    {
+        condition: 'Play against your friends',
+        crakd: <CheckColorfulIcon />,
+        trad: <CheckColorfulIcon />,
+    },
+    {
+        condition: 'Pick new contests each week',
+        crakd: <CheckColorfulIcon />,
+        trad: <CheckColorfulIcon />,
+    },
+    {
+        condition: 'Enter multiple contests per week',
+        crakd: <CheckColorfulIcon />,
+        trad: '',
+    },
+    {
+        condition: 'Choose when you want to play',
+        crakd: <CheckColorfulIcon />,
+        trad: '',
+    },
+    {
+        condition: 'Win cash prizes',
+        crakd: <CheckColorfulIcon />,
+        trad: '',
+    },
+    {
+        condition: 'Find a team to play in an event',
+        crakd: '',
+        trad: <CheckColorfulIcon />,
+    },
+    {
+        condition: 'Travel to in-person events',
+        crakd: '',
+        trad: <CheckColorfulIcon />,
+    },
+]
 
 const Home: FC = () => {
     const dispatch = useDispatch();
@@ -27,7 +85,7 @@ const Home: FC = () => {
 
                     
 
-                        <Spacing top="sm">
+                        <Spacing top="sm" bottom="xl">
                             <Spacing top="sm" bottom="sm">
                                 <Text size="lg">{!authUser && 'Join and'} Enter weekly tournaments </Text>
                                 <Spacing top="xs" />
@@ -35,7 +93,7 @@ const Home: FC = () => {
                             </Spacing>
                             {!authUser && (
                                 <Button main inline onClick={openAuthModal} weight="bold" color="primaryGradient">
-                                    Sign up
+                                    Join Now
                                 </Button>
                             )}
                             {authUser && (
@@ -48,8 +106,76 @@ const Home: FC = () => {
                         </Spacing>
                     </Container>
                 </div>
+
+                <Spacing bottom="xl" />
+
+                <Features />
+
+                <Container centered padding="lg">
+                    {!authUser && (
+                        <Button main inline onClick={openAuthModal} weight="bold" color="primaryGradient">
+                            Join Now
+                        </Button>
+                    )}
+                    {authUser && (
+                        <Link href="/tournaments" disableBorderOnHover>
+                            <Button main inline weight="bold">
+                                Start Winning
+                            </Button>
+                        </Link>
+                    )}
+                </Container>
                 
             </div>
+
+            <Spacing bottom="xl" />
+
+            <div>
+                <Spacing bottom="xl">
+                    <TableContainer>
+                        <Table>
+                            <thead>
+                                <Tr>
+                                    <Th></Th>
+                                    <Th>Crakd</Th>
+                                    <Th>Traditional Tournaments</Th>
+                                </Tr>
+                            </thead>
+
+                            {COMPARISON.map((comp, i) => {
+                                return (
+                                    <tbody key={i}>
+                                        <Tr>
+                                            <ConditionTd>{comp.condition}</ConditionTd>
+                                            <StyledTd>{comp.crakd}</StyledTd>
+                                            <StyledTd>{comp.trad}</StyledTd>
+                                        </Tr>
+                                    </tbody>
+                                );
+                            })}
+                        </Table>
+                    </TableContainer>
+                </Spacing>
+            </div>
+
+            <div>
+                <Container centered padding="lg" bgColor="black" shadow="sm">
+                    <Spacing top="sm" bottom="xl">
+                        <Spacing top="sm" bottom="sm">
+                            <Text size="lg">{!authUser && 'Join and'} Do you have questions? </Text>
+                            <Spacing top="xs" />
+                            <Text size="lg">Check out the FAQ!</Text>
+                        </Spacing>
+                        <Link href="/faq" disableBorderOnHover>
+                            <Button main inline weight="bold">
+                                Learn More
+                            </Button>
+                        </Link>
+                    </Spacing>
+                </Container>
+            </div>
+
+            <Spacing bottom="xl" />
         </Layout>
     );
 };

@@ -1,5 +1,6 @@
 export { default as MenuIcon } from './MenuIcon';
 export { default as PlusIcon } from './PlusIcon';
+export { default as CheckColorfulIcon } from './CheckColorfulIcon';
 export { default as CloseIcon } from './CloseIcon';
 export { default as ThreeDotsIcon } from './ThreeDotsIcon';
 export { default as UserIcon } from './UserIcon';
