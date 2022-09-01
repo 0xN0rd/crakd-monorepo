@@ -14,6 +14,7 @@ import {
     Td,
 } from '../components/Settings/SettingsUsers/style';
 import { CheckColorfulIcon } from '../components/ui/icons';
+import { useBreakpoints } from '../utils';
 import { openAuthPopup, PopupType } from '../store/auth';
 import Seo from '../components/Seo';
 
@@ -22,10 +23,21 @@ const ConditionTd = styled(Td)`
     border-bottom: 1px solid #f4f4f725;
 `;
 
+const SmallConditionTd = styled(Td)`
+    font-size: 0.75em;
+    padding: 8px;
+    border-bottom: 1px solid #f4f4f725;
+`;
+
 const StyledTd = styled(Td)`
     text-align: center;
     padding: 8px;
     border-bottom: 1px solid #f4f4f725;
+`;
+
+const StyledTh = styled(Th)`
+    font-size: 0.9em;
+    text-align: center;
 `;
 
 const COMPARISON = [
@@ -69,6 +81,9 @@ const COMPARISON = [
 const Home: FC = () => {
     const dispatch = useDispatch();
     const authUser = useSelector((state: RootState) => state.auth.user);
+    const breakpoint = useBreakpoints();
+
+    const isSmallScreen = breakpoint === 'xs' || breakpoint === 'sm';
 
     const openAuthModal = () => {
         dispatch(openAuthPopup(PopupType.Sign_Up));
@@ -130,33 +145,64 @@ const Home: FC = () => {
 
             <Spacing bottom="xl" />
 
-            <div>
-                <Spacing bottom="xl">
-                    <TableContainer>
-                        <Table>
-                            <thead>
-                                <Tr>
-                                    <Th></Th>
-                                    <Th>Crakd</Th>
-                                    <Th>Traditional Tournaments</Th>
-                                </Tr>
-                            </thead>
+            {!isSmallScreen && (
+                <div>
+                    <Spacing bottom="xl">
+                        <TableContainer>
+                            <Table>
+                                <thead>
+                                    <Tr>
+                                        <Th></Th>
+                                        <Th>Crakd</Th>
+                                        <Th>Traditional Tournaments</Th>
+                                    </Tr>
+                                </thead>
 
-                            {COMPARISON.map((comp, i) => {
-                                return (
-                                    <tbody key={i}>
-                                        <Tr>
-                                            <ConditionTd>{comp.condition}</ConditionTd>
-                                            <StyledTd>{comp.crakd}</StyledTd>
-                                            <StyledTd>{comp.trad}</StyledTd>
-                                        </Tr>
-                                    </tbody>
-                                );
-                            })}
-                        </Table>
-                    </TableContainer>
-                </Spacing>
-            </div>
+                                {COMPARISON.map((comp, i) => {
+                                    return (
+                                        <tbody key={i}>
+                                            <Tr>
+                                                <ConditionTd>{comp.condition}</ConditionTd>
+                                                <StyledTd>{comp.crakd}</StyledTd>
+                                                <StyledTd>{comp.trad}</StyledTd>
+                                            </Tr>
+                                        </tbody>
+                                    );
+                                })}
+                            </Table>
+                        </TableContainer>
+                    </Spacing>
+                </div>
+            )}
+            {isSmallScreen && (
+                <div>
+                    <Spacing bottom="xl">
+                        <TableContainer>
+                            <Table>
+                                <thead>
+                                    <Tr>
+                                        <Th></Th>
+                                        <StyledTh>Crakd</StyledTh>
+                                        <StyledTh>Traditional<br />Tournaments</StyledTh>
+                                    </Tr>
+                                </thead>
+
+                                {COMPARISON.map((comp, i) => {
+                                    return (
+                                        <tbody key={i}>
+                                            <Tr>
+                                                <SmallConditionTd>{comp.condition}</SmallConditionTd>
+                                                <StyledTd>{comp.crakd}</StyledTd>
+                                                <StyledTd>{comp.trad}</StyledTd>
+                                            </Tr>
+                                        </tbody>
+                                    );
+                                })}
+                            </Table>
+                        </TableContainer>
+                    </Spacing>
+                </div>
+            )}
 
             <div>
                 <Container centered padding="lg" bgColor="black" shadow="sm">
