@@ -7,17 +7,17 @@ const Hero: FC = () => {
                 <div className="hero-texts">
                     <div className="hero appear appear-first">
                         <h1 className="first-gradient">
-                            ENTER.
+                            WEEKLY CONTESTS.
                         </h1>
                     </div>
                     <div className="hero appear appear-second">
                         <h1 className="second-gradient">
-                            PLAY.
+                            MULTPILE GAMES.
                         </h1>
                     </div>
                     <div className="hero appear appear-third">
                         <h1 className="third-gradient">
-                            WIN.
+                            CASH PRIZES.
                         </h1>
                     </div>
                 </div>

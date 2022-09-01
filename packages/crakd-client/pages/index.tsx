@@ -105,7 +105,7 @@ const Home: FC = () => {
                                 <Text size="lg">
                                     Play your favorite game with Crakd.
                                     Enter one or multiple contests every week.
-                                    The opportunity is yours.
+                                    Get cracked and take home cash prizes.
                                 </Text>
                             </Spacing>
                             {!authUser && (

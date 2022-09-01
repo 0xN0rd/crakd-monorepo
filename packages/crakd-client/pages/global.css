@@ -58,7 +58,7 @@
 }
 
 .hero {
-  font-size: 4rem;
+  font-size: 1.8rem;
   line-height: 1.15;
   letter-spacing: -0.05em;
   font-weight: 700;
@@ -108,7 +108,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    font-size: 44px;
+    font-size: 1.75rem;
     line-height: 1;
     font-weight: 800;
     margin: 0;
