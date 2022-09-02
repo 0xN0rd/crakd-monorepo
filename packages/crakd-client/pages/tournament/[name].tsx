@@ -5,7 +5,7 @@ import Layout from '../../components/Layout';
 import { EntryCreateButton } from '../../components/Entry';
 import { TournamentPopover } from '../../components/Tournament';
 import EntryEdit from '../../components/EntryCreate/EntryEdit';
-import { Container, Skeleton, Spacing, Button, Text, Empty } from '../../components/ui';
+import { Container, Skeleton, Spacing, Button, Text, Empty, Link } from '../../components/ui';
 import {
     TableContainer,
     Table,
@@ -131,7 +131,9 @@ const TournamentPage: FC<TournamentPageProps> = ({ tournament }) => {
                                         {entries?.sort((a, b) => a.score > b.score ? -1 : 1).map((entry: Entry) => (
                                             <Tr key={entry._id}>
                                                 <Td>{entry.position}</Td>
-                                                <Td>{entry.user.username}</Td>
+                                                <Link color="primary" href={`/profile/${entry.user._id}`} disableBorderOnHover>
+                                                    <Td>{entry.user.username}</Td>
+                                                </Link>
                                                 <Td>{entry.gamertag}</Td>
                                                 <Td>{entry.platform}</Td>
                                                 <Td>{entry.region}</Td>

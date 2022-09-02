@@ -33,7 +33,7 @@ const Features: FC = () => {
                     <div className="section-constainer section-description-wrapper">
                         <div className="section-container">
                             <p className="paragraph paragraph-medium paragaph-secondary">
-                                You don&apos;t have to be a pro to win cash prizes playing League. Popping off in one game can send you to the top of the leaderboard. No more falling to the losers bracket.
+                                You don&apos;t have to be a pro to win cash prizes playing video games. Popping off in one match can send you to the top of the leaderboard. No more falling to the losers bracket.
                             </p>
                         </div>
                     </div>
